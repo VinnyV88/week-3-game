@@ -13,6 +13,11 @@
 // 9. If user runs out of guesses, display losing sequence (sound-bite/song, graphic animation)  
 // 10. Start game over with new random word
 
+	video.addEventListener('ended',function() {
+		video.style.display = 'none';
+	});
+
+
 	var hangman = {
 		wins: 0,
 		losses: 0,
@@ -131,6 +136,7 @@
 			if (this.guesses === 0) {
     			this.message = "Game Over!"
     			this.instruct = "Press Enter to start with a new word."
+    			this.stsimg = "breakingbad_dead.jpg"
     			this.losses++
 			   	
     		} 
@@ -142,6 +148,7 @@
 				// this.winner = true
 				this.message = "Winner!"
 				this.instruct = "Press Enter to start with a new word."
+				this.stsimg = "yeah_bitch.gif"
 				this.wins++
 			   	
 			}
@@ -162,172 +169,177 @@
 
 		updateStatusImg: function() {
 
-			this.status_imgHTML = this.stsimg		
+			if (!(this.stsimg === " ")) {
+				this.status_imgHTML = "<img class=\"img-responsive\" id=\"sts\" style=\"width:100%;\" src=\"assets/images/" + this.stsimg + "\" alt=\"status image\">"
+			}
+			else {
+				this.status_imgHTML = " "
+			}	
 		},
 
 		updateHangman: function() {
 
 			switch(this.guesses) {
 			    case 8:
-					this.hangmanHTML = "<img class=\"img-responsive\" id=\"hm_bg\" style=\"width:100%;\" src=\"assets/images/hangman_bg.png\" alt=\"Hangman bg\"> " +
-					"<img class=\"img-responsive\" id=\"hm_01\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_01.png\" alt=\"Hangman 01\"> " +
-					"<img class=\"img-responsive\" id=\"hm_02\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_02.png\" alt=\"Hangman 02\"> " +
-					"<img class=\"img-responsive\" id=\"hm_03\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_03.png\" alt=\"Hangman 03\"> " +
-					"<img class=\"img-responsive\" id=\"hm_04\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_04.png\" alt=\"Hangman 04\"> " +
-					"<img class=\"img-responsive\" id=\"hm_05\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_05.png\" alt=\"Hangman 05\"> " +
-					"<img class=\"img-responsive\" id=\"hm_06\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_06.png\" alt=\"Hangman 06\"> " +
-					"<img class=\"img-responsive\" id=\"hm_07\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_07.png\" alt=\"Hangman 07\"> " +
-					"<img class=\"img-responsive\" id=\"hm_08\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_08.png\" alt=\"Hangman 08\">"
+					this.hangmanHTML = "<img class=\"img-responsive\" id=\"hm_bg\" style=\"width:85%;\" src=\"assets/images/hangman_bg.png\" alt=\"Hangman bg\"> " +
+					"<img class=\"img-responsive\" id=\"hm_01\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_01.png\" alt=\"Hangman 01\"> " +
+					"<img class=\"img-responsive\" id=\"hm_02\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_02.png\" alt=\"Hangman 02\"> " +
+					"<img class=\"img-responsive\" id=\"hm_03\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_03.png\" alt=\"Hangman 03\"> " +
+					"<img class=\"img-responsive\" id=\"hm_04\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_04.png\" alt=\"Hangman 04\"> " +
+					"<img class=\"img-responsive\" id=\"hm_05\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_05.png\" alt=\"Hangman 05\"> " +
+					"<img class=\"img-responsive\" id=\"hm_06\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_06.png\" alt=\"Hangman 06\"> " +
+					"<img class=\"img-responsive\" id=\"hm_07\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_07.png\" alt=\"Hangman 07\"> " +
+					"<img class=\"img-responsive\" id=\"hm_08\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_08.png\" alt=\"Hangman 08\">"
 			        break;
 			    case 7:
-					this.hangmanHTML = "<img class=\"img-responsive\" id=\"hm_bg\" style=\"width:100%;\" src=\"assets/images/hangman_bg.png\" alt=\"Hangman bg\"> " 
+					this.hangmanHTML = "<img class=\"img-responsive\" id=\"hm_bg\" style=\"width:85%;\" src=\"assets/images/hangman_bg.png\" alt=\"Hangman bg\"> " 
 					if ((this.hit) || (this.repeat)) {
 						this.hangmanHTML += 
-							"<img class=\"img-responsive\" id=\"hm_01\" style=\"width:100%;\" src=\"assets/images/hangman_miss_01.png\" alt=\"Hangman 01\"> " 
+							"<img class=\"img-responsive\" id=\"hm_01\" style=\"width:85%;\" src=\"assets/images/hangman_miss_01.png\" alt=\"Hangman 01\"> " 
 					}
 					else {
 						this.hangmanHTML +=  
-							"<img class=\"img-responsive miss\" id=\"hm_01\" style=\"width:100%;\" src=\"assets/images/hangman_miss_01.png\" alt=\"Hangman 01\"> " 	
+							"<img class=\"img-responsive miss\" id=\"hm_01\" style=\"width:85%;\" src=\"assets/images/hangman_miss_01.png\" alt=\"Hangman 01\"> " 	
 					}
 					this.hangmanHTML +=
-					"<img class=\"img-responsive\" id=\"hm_02\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_02.png\" alt=\"Hangman 02\"> " +
-					"<img class=\"img-responsive\" id=\"hm_03\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_03.png\" alt=\"Hangman 03\"> " +
-					"<img class=\"img-responsive\" id=\"hm_04\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_04.png\" alt=\"Hangman 04\"> " +
-					"<img class=\"img-responsive\" id=\"hm_05\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_05.png\" alt=\"Hangman 05\"> " +
-					"<img class=\"img-responsive\" id=\"hm_06\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_06.png\" alt=\"Hangman 06\"> " +
-					"<img class=\"img-responsive\" id=\"hm_07\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_07.png\" alt=\"Hangman 07\"> " +
-					"<img class=\"img-responsive\" id=\"hm_08\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_08.png\" alt=\"Hangman 08\">"
+					"<img class=\"img-responsive\" id=\"hm_02\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_02.png\" alt=\"Hangman 02\"> " +
+					"<img class=\"img-responsive\" id=\"hm_03\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_03.png\" alt=\"Hangman 03\"> " +
+					"<img class=\"img-responsive\" id=\"hm_04\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_04.png\" alt=\"Hangman 04\"> " +
+					"<img class=\"img-responsive\" id=\"hm_05\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_05.png\" alt=\"Hangman 05\"> " +
+					"<img class=\"img-responsive\" id=\"hm_06\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_06.png\" alt=\"Hangman 06\"> " +
+					"<img class=\"img-responsive\" id=\"hm_07\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_07.png\" alt=\"Hangman 07\"> " +
+					"<img class=\"img-responsive\" id=\"hm_08\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_08.png\" alt=\"Hangman 08\">"
 			        break;
 			    case 6:
-					this.hangmanHTML = "<img class=\"img-responsive\" id=\"hm_bg\" style=\"width:100%;\" src=\"assets/images/hangman_bg.png\" alt=\"Hangman bg\"> " +
-					"<img class=\"img-responsive\" id=\"hm_01\" style=\"width:100%;\" src=\"assets/images/hangman_miss_01.png\" alt=\"Hangman 01\"> " 
+					this.hangmanHTML = "<img class=\"img-responsive\" id=\"hm_bg\" style=\"width:85%;\" src=\"assets/images/hangman_bg.png\" alt=\"Hangman bg\"> " +
+					"<img class=\"img-responsive\" id=\"hm_01\" style=\"width:85%;\" src=\"assets/images/hangman_miss_01.png\" alt=\"Hangman 01\"> " 
 					if ((this.hit) || (this.repeat)) {
 						this.hangmanHTML += 
-							"<img class=\"img-responsive\" id=\"hm_02\" style=\"width:100%;\" src=\"assets/images/hangman_miss_02.png\" alt=\"Hangman 02\"> " 
+							"<img class=\"img-responsive\" id=\"hm_02\" style=\"width:85%;\" src=\"assets/images/hangman_miss_02.png\" alt=\"Hangman 02\"> " 
 					}
 					else {
 						this.hangmanHTML +=  
-							"<img class=\"img-responsive miss\" id=\"hm_02\" style=\"width:100%;\" src=\"assets/images/hangman_miss_02.png\" alt=\"Hangman 02\"> " 	
+							"<img class=\"img-responsive miss\" id=\"hm_02\" style=\"width:85%;\" src=\"assets/images/hangman_miss_02.png\" alt=\"Hangman 02\"> " 	
 					}
 					this.hangmanHTML +=
-					"<img class=\"img-responsive\" id=\"hm_03\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_03.png\" alt=\"Hangman 03\"> " +
-					"<img class=\"img-responsive\" id=\"hm_04\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_04.png\" alt=\"Hangman 04\"> " +
-					"<img class=\"img-responsive\" id=\"hm_05\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_05.png\" alt=\"Hangman 05\"> " +
-					"<img class=\"img-responsive\" id=\"hm_06\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_06.png\" alt=\"Hangman 06\"> " +
-					"<img class=\"img-responsive\" id=\"hm_07\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_07.png\" alt=\"Hangman 07\"> " +
-					"<img class=\"img-responsive\" id=\"hm_08\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_08.png\" alt=\"Hangman 08\">"
+					"<img class=\"img-responsive\" id=\"hm_03\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_03.png\" alt=\"Hangman 03\"> " +
+					"<img class=\"img-responsive\" id=\"hm_04\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_04.png\" alt=\"Hangman 04\"> " +
+					"<img class=\"img-responsive\" id=\"hm_05\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_05.png\" alt=\"Hangman 05\"> " +
+					"<img class=\"img-responsive\" id=\"hm_06\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_06.png\" alt=\"Hangman 06\"> " +
+					"<img class=\"img-responsive\" id=\"hm_07\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_07.png\" alt=\"Hangman 07\"> " +
+					"<img class=\"img-responsive\" id=\"hm_08\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_08.png\" alt=\"Hangman 08\">"
 			        break;
 			    case 5:
-					this.hangmanHTML = "<img class=\"img-responsive\" id=\"hm_bg\" style=\"width:100%;\" src=\"assets/images/hangman_bg.png\" alt=\"Hangman bg\"> " +
-					"<img class=\"img-responsive\" id=\"hm_01\" style=\"width:100%;\" src=\"assets/images/hangman_miss_01.png\" alt=\"Hangman 01\"> " +
-					"<img class=\"img-responsive\" id=\"hm_02\" style=\"width:100%;\" src=\"assets/images/hangman_miss_02.png\" alt=\"Hangman 02\"> " 
+					this.hangmanHTML = "<img class=\"img-responsive\" id=\"hm_bg\" style=\"width:85%;\" src=\"assets/images/hangman_bg.png\" alt=\"Hangman bg\"> " +
+					"<img class=\"img-responsive\" id=\"hm_01\" style=\"width:85%;\" src=\"assets/images/hangman_miss_01.png\" alt=\"Hangman 01\"> " +
+					"<img class=\"img-responsive\" id=\"hm_02\" style=\"width:85%;\" src=\"assets/images/hangman_miss_02.png\" alt=\"Hangman 02\"> " 
 					if ((this.hit) || (this.repeat)) {
 						this.hangmanHTML += 
-							"<img class=\"img-responsive\" id=\"hm_03\" style=\"width:100%;\" src=\"assets/images/hangman_miss_03.png\" alt=\"Hangman 03\"> " 
+							"<img class=\"img-responsive\" id=\"hm_03\" style=\"width:85%;\" src=\"assets/images/hangman_miss_03.png\" alt=\"Hangman 03\"> " 
 					}
 					else {
 						this.hangmanHTML +=  
-							"<img class=\"img-responsive miss\" id=\"hm_03\" style=\"width:100%;\" src=\"assets/images/hangman_miss_03.png\" alt=\"Hangman 03\"> " 	
+							"<img class=\"img-responsive miss\" id=\"hm_03\" style=\"width:85%;\" src=\"assets/images/hangman_miss_03.png\" alt=\"Hangman 03\"> " 	
 					}
 					this.hangmanHTML +=
-					"<img class=\"img-responsive\" id=\"hm_04\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_04.png\" alt=\"Hangman 04\"> " +
-					"<img class=\"img-responsive\" id=\"hm_05\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_05.png\" alt=\"Hangman 05\"> " +
-					"<img class=\"img-responsive\" id=\"hm_06\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_06.png\" alt=\"Hangman 06\"> " +
-					"<img class=\"img-responsive\" id=\"hm_07\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_07.png\" alt=\"Hangman 07\"> " +
-					"<img class=\"img-responsive\" id=\"hm_08\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_08.png\" alt=\"Hangman 08\">"
+					"<img class=\"img-responsive\" id=\"hm_04\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_04.png\" alt=\"Hangman 04\"> " +
+					"<img class=\"img-responsive\" id=\"hm_05\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_05.png\" alt=\"Hangman 05\"> " +
+					"<img class=\"img-responsive\" id=\"hm_06\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_06.png\" alt=\"Hangman 06\"> " +
+					"<img class=\"img-responsive\" id=\"hm_07\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_07.png\" alt=\"Hangman 07\"> " +
+					"<img class=\"img-responsive\" id=\"hm_08\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_08.png\" alt=\"Hangman 08\">"
 			        break;
 			    case 4:
-					this.hangmanHTML = "<img class=\"img-responsive\" id=\"hm_bg\" style=\"width:100%;\" src=\"assets/images/hangman_bg.png\" alt=\"Hangman bg\"> " +
-					"<img class=\"img-responsive\" id=\"hm_01\" style=\"width:100%;\" src=\"assets/images/hangman_miss_01.png\" alt=\"Hangman 01\"> " +
-					"<img class=\"img-responsive\" id=\"hm_02\" style=\"width:100%;\" src=\"assets/images/hangman_miss_02.png\" alt=\"Hangman 02\"> " +
-					"<img class=\"img-responsive\" id=\"hm_03\" style=\"width:100%;\" src=\"assets/images/hangman_miss_03.png\" alt=\"Hangman 03\"> " 
+					this.hangmanHTML = "<img class=\"img-responsive\" id=\"hm_bg\" style=\"width:85%;\" src=\"assets/images/hangman_bg.png\" alt=\"Hangman bg\"> " +
+					"<img class=\"img-responsive\" id=\"hm_01\" style=\"width:85%;\" src=\"assets/images/hangman_miss_01.png\" alt=\"Hangman 01\"> " +
+					"<img class=\"img-responsive\" id=\"hm_02\" style=\"width:85%;\" src=\"assets/images/hangman_miss_02.png\" alt=\"Hangman 02\"> " +
+					"<img class=\"img-responsive\" id=\"hm_03\" style=\"width:85%;\" src=\"assets/images/hangman_miss_03.png\" alt=\"Hangman 03\"> " 
 					if ((this.hit) || (this.repeat)) {
 						this.hangmanHTML += 
-							"<img class=\"img-responsive\" id=\"hm_04\" style=\"width:100%;\" src=\"assets/images/hangman_miss_04.png\" alt=\"Hangman 04\"> " 
+							"<img class=\"img-responsive\" id=\"hm_04\" style=\"width:85%;\" src=\"assets/images/hangman_miss_04.png\" alt=\"Hangman 04\"> " 
 					}
 					else {
 						this.hangmanHTML +=  
-							"<img class=\"img-responsive miss\" id=\"hm_04\" style=\"width:100%;\" src=\"assets/images/hangman_miss_04.png\" alt=\"Hangman 04\"> " 	
+							"<img class=\"img-responsive miss\" id=\"hm_04\" style=\"width:85%;\" src=\"assets/images/hangman_miss_04.png\" alt=\"Hangman 04\"> " 	
 					}
 					this.hangmanHTML +=
-					"<img class=\"img-responsive\" id=\"hm_05\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_05.png\" alt=\"Hangman 05\"> " +
-					"<img class=\"img-responsive\" id=\"hm_06\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_06.png\" alt=\"Hangman 06\"> " +
-					"<img class=\"img-responsive\" id=\"hm_07\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_07.png\" alt=\"Hangman 07\"> " +
-					"<img class=\"img-responsive\" id=\"hm_08\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_08.png\" alt=\"Hangman 08\">"
+					"<img class=\"img-responsive\" id=\"hm_05\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_05.png\" alt=\"Hangman 05\"> " +
+					"<img class=\"img-responsive\" id=\"hm_06\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_06.png\" alt=\"Hangman 06\"> " +
+					"<img class=\"img-responsive\" id=\"hm_07\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_07.png\" alt=\"Hangman 07\"> " +
+					"<img class=\"img-responsive\" id=\"hm_08\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_08.png\" alt=\"Hangman 08\">"
 			        break;
 			    case 3:
-					this.hangmanHTML = "<img class=\"img-responsive\" id=\"hm_bg\" style=\"width:100%;\" src=\"assets/images/hangman_bg.png\" alt=\"Hangman bg\"> " +
-					"<img class=\"img-responsive\" id=\"hm_01\" style=\"width:100%;\" src=\"assets/images/hangman_miss_01.png\" alt=\"Hangman 01\"> " +
-					"<img class=\"img-responsive\" id=\"hm_02\" style=\"width:100%;\" src=\"assets/images/hangman_miss_02.png\" alt=\"Hangman 02\"> " +
-					"<img class=\"img-responsive\" id=\"hm_03\" style=\"width:100%;\" src=\"assets/images/hangman_miss_03.png\" alt=\"Hangman 03\"> " +
-					"<img class=\"img-responsive\" id=\"hm_04\" style=\"width:100%;\" src=\"assets/images/hangman_miss_04.png\" alt=\"Hangman 04\"> " 
+					this.hangmanHTML = "<img class=\"img-responsive\" id=\"hm_bg\" style=\"width:85%;\" src=\"assets/images/hangman_bg.png\" alt=\"Hangman bg\"> " +
+					"<img class=\"img-responsive\" id=\"hm_01\" style=\"width:85%;\" src=\"assets/images/hangman_miss_01.png\" alt=\"Hangman 01\"> " +
+					"<img class=\"img-responsive\" id=\"hm_02\" style=\"width:85%;\" src=\"assets/images/hangman_miss_02.png\" alt=\"Hangman 02\"> " +
+					"<img class=\"img-responsive\" id=\"hm_03\" style=\"width:85%;\" src=\"assets/images/hangman_miss_03.png\" alt=\"Hangman 03\"> " +
+					"<img class=\"img-responsive\" id=\"hm_04\" style=\"width:85%;\" src=\"assets/images/hangman_miss_04.png\" alt=\"Hangman 04\"> " 
 					if ((this.hit) || (this.repeat)) {
 						this.hangmanHTML += 
-							"<img class=\"img-responsive\" id=\"hm_05\" style=\"width:100%;\" src=\"assets/images/hangman_miss_05.png\" alt=\"Hangman 05\"> " 
+							"<img class=\"img-responsive\" id=\"hm_05\" style=\"width:85%;\" src=\"assets/images/hangman_miss_05.png\" alt=\"Hangman 05\"> " 
 					}
 					else {
 						this.hangmanHTML +=  
-							"<img class=\"img-responsive miss\" id=\"hm_05\" style=\"width:100%;\" src=\"assets/images/hangman_miss_05.png\" alt=\"Hangman 05\"> " 	
+							"<img class=\"img-responsive miss\" id=\"hm_05\" style=\"width:85%;\" src=\"assets/images/hangman_miss_05.png\" alt=\"Hangman 05\"> " 	
 					}
 					this.hangmanHTML +=
-					"<img class=\"img-responsive\" id=\"hm_06\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_06.png\" alt=\"Hangman 06\"> " +
-					"<img class=\"img-responsive\" id=\"hm_07\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_07.png\" alt=\"Hangman 07\"> " +
-					"<img class=\"img-responsive\" id=\"hm_08\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_08.png\" alt=\"Hangman 08\">"
+					"<img class=\"img-responsive\" id=\"hm_06\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_06.png\" alt=\"Hangman 06\"> " +
+					"<img class=\"img-responsive\" id=\"hm_07\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_07.png\" alt=\"Hangman 07\"> " +
+					"<img class=\"img-responsive\" id=\"hm_08\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_08.png\" alt=\"Hangman 08\">"
 			        break;
 			    case 2:
-					this.hangmanHTML = "<img class=\"img-responsive\" id=\"hm_bg\" style=\"width:100%;\" src=\"assets/images/hangman_bg.png\" alt=\"Hangman bg\"> " +
-					"<img class=\"img-responsive\" id=\"hm_01\" style=\"width:100%;\" src=\"assets/images/hangman_miss_01.png\" alt=\"Hangman 01\"> " +
-					"<img class=\"img-responsive\" id=\"hm_02\" style=\"width:100%;\" src=\"assets/images/hangman_miss_02.png\" alt=\"Hangman 02\"> " +
-					"<img class=\"img-responsive\" id=\"hm_03\" style=\"width:100%;\" src=\"assets/images/hangman_miss_03.png\" alt=\"Hangman 03\"> " +
-					"<img class=\"img-responsive\" id=\"hm_04\" style=\"width:100%;\" src=\"assets/images/hangman_miss_04.png\" alt=\"Hangman 04\"> " +
-					"<img class=\"img-responsive\" id=\"hm_05\" style=\"width:100%;\" src=\"assets/images/hangman_miss_05.png\" alt=\"Hangman 05\"> " 
+					this.hangmanHTML = "<img class=\"img-responsive\" id=\"hm_bg\" style=\"width:85%;\" src=\"assets/images/hangman_bg.png\" alt=\"Hangman bg\"> " +
+					"<img class=\"img-responsive\" id=\"hm_01\" style=\"width:85%;\" src=\"assets/images/hangman_miss_01.png\" alt=\"Hangman 01\"> " +
+					"<img class=\"img-responsive\" id=\"hm_02\" style=\"width:85%;\" src=\"assets/images/hangman_miss_02.png\" alt=\"Hangman 02\"> " +
+					"<img class=\"img-responsive\" id=\"hm_03\" style=\"width:85%;\" src=\"assets/images/hangman_miss_03.png\" alt=\"Hangman 03\"> " +
+					"<img class=\"img-responsive\" id=\"hm_04\" style=\"width:85%;\" src=\"assets/images/hangman_miss_04.png\" alt=\"Hangman 04\"> " +
+					"<img class=\"img-responsive\" id=\"hm_05\" style=\"width:85%;\" src=\"assets/images/hangman_miss_05.png\" alt=\"Hangman 05\"> " 
 					if ((this.hit) || (this.repeat)) {
 						this.hangmanHTML += 
-							"<img class=\"img-responsive\" id=\"hm_06\" style=\"width:100%;\" src=\"assets/images/hangman_miss_06.png\" alt=\"Hangman 06\"> " 
+							"<img class=\"img-responsive\" id=\"hm_06\" style=\"width:85%;\" src=\"assets/images/hangman_miss_06.png\" alt=\"Hangman 06\"> " 
 					}
 					else {
 						this.hangmanHTML +=  
-							"<img class=\"img-responsive miss\" id=\"hm_06\" style=\"width:100%;\" src=\"assets/images/hangman_miss_06.png\" alt=\"Hangman 06\"> " 	
+							"<img class=\"img-responsive miss\" id=\"hm_06\" style=\"width:85%;\" src=\"assets/images/hangman_miss_06.png\" alt=\"Hangman 06\"> " 	
 					}
 					this.hangmanHTML +=
-					"<img class=\"img-responsive\" id=\"hm_07\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_07.png\" alt=\"Hangman 07\"> " +
-					"<img class=\"img-responsive\" id=\"hm_08\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_08.png\" alt=\"Hangman 08\">"
+					"<img class=\"img-responsive\" id=\"hm_07\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_07.png\" alt=\"Hangman 07\"> " +
+					"<img class=\"img-responsive\" id=\"hm_08\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_08.png\" alt=\"Hangman 08\">"
 			        break;
 			    case 1:
-					this.hangmanHTML = "<img class=\"img-responsive\" id=\"hm_bg\" style=\"width:100%;\" src=\"assets/images/hangman_bg.png\" alt=\"Hangman bg\"> " +
-					"<img class=\"img-responsive\" id=\"hm_01\" style=\"width:100%;\" src=\"assets/images/hangman_miss_01.png\" alt=\"Hangman 01\"> " +
-					"<img class=\"img-responsive\" id=\"hm_02\" style=\"width:100%;\" src=\"assets/images/hangman_miss_02.png\" alt=\"Hangman 02\"> " +
-					"<img class=\"img-responsive\" id=\"hm_03\" style=\"width:100%;\" src=\"assets/images/hangman_miss_03.png\" alt=\"Hangman 03\"> " +
-					"<img class=\"img-responsive\" id=\"hm_04\" style=\"width:100%;\" src=\"assets/images/hangman_miss_04.png\" alt=\"Hangman 04\"> " +
-					"<img class=\"img-responsive\" id=\"hm_05\" style=\"width:100%;\" src=\"assets/images/hangman_miss_05.png\" alt=\"Hangman 05\"> " +
-					"<img class=\"img-responsive\" id=\"hm_06\" style=\"width:100%;\" src=\"assets/images/hangman_miss_06.png\" alt=\"Hangman 06\"> " 
+					this.hangmanHTML = "<img class=\"img-responsive\" id=\"hm_bg\" style=\"width:85%;\" src=\"assets/images/hangman_bg.png\" alt=\"Hangman bg\"> " +
+					"<img class=\"img-responsive\" id=\"hm_01\" style=\"width:85%;\" src=\"assets/images/hangman_miss_01.png\" alt=\"Hangman 01\"> " +
+					"<img class=\"img-responsive\" id=\"hm_02\" style=\"width:85%;\" src=\"assets/images/hangman_miss_02.png\" alt=\"Hangman 02\"> " +
+					"<img class=\"img-responsive\" id=\"hm_03\" style=\"width:85%;\" src=\"assets/images/hangman_miss_03.png\" alt=\"Hangman 03\"> " +
+					"<img class=\"img-responsive\" id=\"hm_04\" style=\"width:85%;\" src=\"assets/images/hangman_miss_04.png\" alt=\"Hangman 04\"> " +
+					"<img class=\"img-responsive\" id=\"hm_05\" style=\"width:85%;\" src=\"assets/images/hangman_miss_05.png\" alt=\"Hangman 05\"> " +
+					"<img class=\"img-responsive\" id=\"hm_06\" style=\"width:85%;\" src=\"assets/images/hangman_miss_06.png\" alt=\"Hangman 06\"> " 
 					if ((this.hit) || (this.repeat)) {
 						this.hangmanHTML += 
-							"<img class=\"img-responsive\" id=\"hm_07\" style=\"width:100%;\" src=\"assets/images/hangman_miss_07.png\" alt=\"Hangman 07\"> " 
+							"<img class=\"img-responsive\" id=\"hm_07\" style=\"width:85%;\" src=\"assets/images/hangman_miss_07.png\" alt=\"Hangman 07\"> " 
 					}
 					else {
 						this.hangmanHTML +=  
-							"<img class=\"img-responsive miss\" id=\"hm_07\" style=\"width:100%;\" src=\"assets/images/hangman_miss_07.png\" alt=\"Hangman 07\"> " 	
+							"<img class=\"img-responsive miss\" id=\"hm_07\" style=\"width:85%;\" src=\"assets/images/hangman_miss_07.png\" alt=\"Hangman 07\"> " 	
 					}
 					this.hangmanHTML +=
-					"<img class=\"img-responsive\" id=\"hm_08\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_08.png\" alt=\"Hangman 08\">"
+					"<img class=\"img-responsive\" id=\"hm_08\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_08.png\" alt=\"Hangman 08\">"
 			        break;
 			    case 0:
-					this.hangmanHTML = "<img class=\"img-responsive\" id=\"hm_bg\" style=\"width:100%;\" src=\"assets/images/hangman_bg.png\" alt=\"Hangman bg\"> " +
-					"<img class=\"img-responsive\" id=\"hm_01\" style=\"width:100%;\" src=\"assets/images/hangman_miss_01.png\" alt=\"Hangman 01\"> " +
-					"<img class=\"img-responsive\" id=\"hm_02\" style=\"width:100%;\" src=\"assets/images/hangman_miss_02.png\" alt=\"Hangman 02\"> " +
-					"<img class=\"img-responsive\" id=\"hm_03\" style=\"width:100%;\" src=\"assets/images/hangman_miss_03.png\" alt=\"Hangman 03\"> " +
-					"<img class=\"img-responsive\" id=\"hm_04\" style=\"width:100%;\" src=\"assets/images/hangman_miss_04.png\" alt=\"Hangman 04\"> " +
-					"<img class=\"img-responsive\" id=\"hm_05\" style=\"width:100%;\" src=\"assets/images/hangman_miss_05.png\" alt=\"Hangman 05\"> " +
-					"<img class=\"img-responsive\" id=\"hm_06\" style=\"width:100%;\" src=\"assets/images/hangman_miss_06.png\" alt=\"Hangman 06\"> " +
-					"<img class=\"img-responsive\" id=\"hm_07\" style=\"width:100%;\" src=\"assets/images/hangman_miss_07.png\" alt=\"Hangman 07\"> " 
+					this.hangmanHTML = "<img class=\"img-responsive\" id=\"hm_bg\" style=\"width:85%;\" src=\"assets/images/hangman_bg.png\" alt=\"Hangman bg\"> " +
+					"<img class=\"img-responsive\" id=\"hm_01\" style=\"width:85%;\" src=\"assets/images/hangman_miss_01.png\" alt=\"Hangman 01\"> " +
+					"<img class=\"img-responsive\" id=\"hm_02\" style=\"width:85%;\" src=\"assets/images/hangman_miss_02.png\" alt=\"Hangman 02\"> " +
+					"<img class=\"img-responsive\" id=\"hm_03\" style=\"width:85%;\" src=\"assets/images/hangman_miss_03.png\" alt=\"Hangman 03\"> " +
+					"<img class=\"img-responsive\" id=\"hm_04\" style=\"width:85%;\" src=\"assets/images/hangman_miss_04.png\" alt=\"Hangman 04\"> " +
+					"<img class=\"img-responsive\" id=\"hm_05\" style=\"width:85%;\" src=\"assets/images/hangman_miss_05.png\" alt=\"Hangman 05\"> " +
+					"<img class=\"img-responsive\" id=\"hm_06\" style=\"width:85%;\" src=\"assets/images/hangman_miss_06.png\" alt=\"Hangman 06\"> " +
+					"<img class=\"img-responsive\" id=\"hm_07\" style=\"width:85%;\" src=\"assets/images/hangman_miss_07.png\" alt=\"Hangman 07\"> " 
 					if ((this.hit) || (this.repeat)) {
 						this.hangmanHTML += 
-							"<img class=\"img-responsive\" id=\"hm_08\" style=\"width:100%;\" src=\"assets/images/hangman_miss_08.png\" alt=\"Hangman 08\"> " 
+							"<img class=\"img-responsive\" id=\"hm_08\" style=\"width:85%;\" src=\"assets/images/hangman_miss_08.png\" alt=\"Hangman 08\"> " 
 					}
 					else {
 						this.hangmanHTML +=  
-							"<img class=\"img-responsive miss\" id=\"hm_08\" style=\"width:100%;\" src=\"assets/images/hangman_miss_08.png\" alt=\"Hangman 08\"> " 	
+							"<img class=\"img-responsive miss\" id=\"hm_08\" style=\"width:85%;\" src=\"assets/images/hangman_miss_08.png\" alt=\"Hangman 08\"> " 	
 					}
 					
 					break;
@@ -370,6 +382,7 @@
 				// Update Status Image
 				this.updateStatusImg()
 				document.getElementById("status_img").innerHTML = (this.status_imgHTML)
+			
 
 				// Update Hangman Images
 				this.updateHangman()

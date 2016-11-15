@@ -7,7 +7,9 @@
 	padding: 5px;
 }
 
-video#smoke {width:100%; height:100%; position:fixed; top:0px; left:0px; z-index:-1000;}
+video {width:100%; height:100%; position:fixed; top:0px; left:0px; z-index:-1000;
+  background-size: cover;
+}
 
 
 .carousel-inner > .item > img {
@@ -88,57 +90,89 @@ video#smoke {width:100%; height:100%; position:fixed; top:0px; left:0px; z-index
 	font-size: 16px;
 }
 
+#sts {
+	border: 5px groove;	
+}
+
+
+/*The only way I could get the hangman images to not overlay the section below it on a smaller screen 
+was to put this dummy image without absolute positioning to push the row down*/
+#hm_bg_holder {
+	border: 5px groove;
+	float: left;
+	z-index: 0;
+	opacity: 0;
+}
+
 #hm_bg {
 	border: 5px groove;
 	position: absolute;
+	margin:auto;
+	height: auto;
 	z-index: 1;
 }
 
 
 #hm_01 {
 	position: absolute;
+	margin:auto;
+	height: auto;
 	z-index: 2;
 /*	display: inline-block;
 */}
 
 #hm_02 {
 	position: absolute;
+	margin:auto;
+	height: auto;
 	z-index: 3;
 /*	display: none;
 */}
 
 #hm_03 {
 	position: absolute;
+	margin:auto;
+	height: auto;
 	z-index: 4;
 /*	display: none;
 */}
 
 #hm_04 {
 	position: absolute;
+	margin:auto;
+	height: auto;
 	z-index: 5;
 /*	display: none;
 */}
 
 #hm_05 {
 	position: absolute;
+	margin:auto;
+	height: auto;
 	z-index: 6;
 /*	display: none;
 */}
 
 #hm_06 {
 	position: absolute;
+	margin:auto;
+	height: auto;
 	z-index: 7;
 /*	display: none;
 */}
 
 #hm_07 {
 	position: absolute;
+	margin:auto;
+	height: auto;
 	z-index: 8;
 /*	display: none;
 */}
 
 #hm_08 {
 	position: absolute;
+	margin:auto;
+	height: auto;
 	z-index: 9;
 /*	display: none;
 */}

@@ -14,11 +14,14 @@
 </head>
 
 <body>
-	<!-- <video id="smoke" autoplay="" loop="">
+	<video id="video" autoplay>
 	  <source src="assets/video/smoke.mp4" type="video/mp4">
 	  <source src="assets/video/smoke.webm" type="video/webm">
 	  <source src="assets/video/smoke.ogv" type="video/ogg">
-	</video> -->
+	</video>
+	<audio autoplay>
+		<source src="assets/audio/breaking_bad_theme.mp3" type="audio/mp3">
+	</audio>
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -48,11 +51,11 @@
 	<div class="container">
 		
 		<div class="row">	
-			<div class="col-md-10 margin-bottom-md col-md-offset-1">
+			<div class="col-md-10 margin-bottom-lg col-md-offset-1">
 				<!-- <h2>Contact</h2> -->
-				<div class="row">
-					<div class="col-md-5 col-md-offset-3">
-						<img class="img-responsive" style="width:100%" src="assets/images/hangman_logo_bb.png" alt="Hangman hdr">
+				<div class="row margin-bottom-lg">
+					<div class="col-md-6 col-md-offset-2">
+						<img class="img-responsive" style="width:100%" src="assets/images/hangman_logo_bb_wide.png" alt="Hangman hdr">
 						
 		            </div>
 		        </div>
@@ -64,34 +67,37 @@
 
 						</div>
 					</div>
-					<div class="col-md-7">
-						<div id="status_img"> 
-
+					<div class="col-md-7 img-responsive">
+						<img class="img-responsive" id="hm_bg_holder" style="width:85%;" src="assets/images/hangman_bg.png" alt="Hangman bg">
+						<div id="hangman">
+							<img class="img-responsive" id="hm_bg" style="width:85%;" src="assets/images/hangman_bg.png" alt="Hangman bg">
+							<img class="img-responsive" id="hm_01" style="width:85%; display:none;" src="assets/images/hangman_miss_01.png" alt="Hangman 01">
+							<img class="img-responsive" id="hm_02" style="width:85%; display:none;" src="assets/images/hangman_miss_02.png" alt="Hangman 02">
+							<img class="img-responsive" id="hm_03" style="width:85%; display:none;" src="assets/images/hangman_miss_03.png" alt="Hangman 03">
+							<img class="img-responsive" id="hm_04" style="width:85%; display:none;" src="assets/images/hangman_miss_04.png" alt="Hangman 04">
+							<img class="img-responsive" id="hm_05" style="width:85%; display:none;" src="assets/images/hangman_miss_05.png" alt="Hangman 05">
+							<img class="img-responsive" id="hm_06" style="width:85%; display:none;" src="assets/images/hangman_miss_06.png" alt="Hangman 06">
+							<img class="img-responsive" id="hm_07" style="width:85%; display:none;" src="assets/images/hangman_miss_07.png" alt="Hangman 07">
+							<img class="img-responsive" id="hm_08" style="width:85%; display:none;" src="assets/images/hangman_miss_08.png" alt="Hangman 08">
 						</div>
-					</div>
+		            </div>
+
 				</div>
 
 		        <div class="row">
 					<div class="col-md-5">
-						<h2>Word and Guesses</h2>
-						<div id="words"> 
+						<div id="status_img"> 
 
 						</div>
 		            </div>
 
 					<div class="col-md-7">
-						<div id="hangman">
-							<img class="img-responsive" id="hm_bg" style="width:100%;" src="assets/images/hangman_bg.png" alt="Hangman bg">
-							<img class="img-responsive" id="hm_01" style="width:100%; display:none;" src="assets/images/hangman_miss_01.png" alt="Hangman 01">
-							<img class="img-responsive" id="hm_02" style="width:100%; display:none;" src="assets/images/hangman_miss_02.png" alt="Hangman 02">
-							<img class="img-responsive" id="hm_03" style="width:100%; display:none;" src="assets/images/hangman_miss_03.png" alt="Hangman 03">
-							<img class="img-responsive" id="hm_04" style="width:100%; display:none;" src="assets/images/hangman_miss_04.png" alt="Hangman 04">
-							<img class="img-responsive" id="hm_05" style="width:100%; display:none;" src="assets/images/hangman_miss_05.png" alt="Hangman 05">
-							<img class="img-responsive" id="hm_06" style="width:100%; display:none;" src="assets/images/hangman_miss_06.png" alt="Hangman 06">
-							<img class="img-responsive" id="hm_07" style="width:100%; display:none;" src="assets/images/hangman_miss_07.png" alt="Hangman 07">
-							<img class="img-responsive" id="hm_08" style="width:100%; display:none;" src="assets/images/hangman_miss_08.png" alt="Hangman 08">
+						<h2>Word and Guesses</h2>
+						<div id="words"> 
+
 						</div>
-		            </div>
+					</div>
+
 		        </div>
 
 		    </div>
