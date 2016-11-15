@@ -19,10 +19,7 @@
 		guesses: 8,
 		userGuess: " ",
 		hits: 0,
-		hit: false,
-		repeat: false,
 		winner: false,
-		gameover: false,
 		lettersGuessed: [],
 		message: " ",
 		instruct: " ",
@@ -43,7 +40,7 @@
 			this.formatWord()
 
 
-			this.message = "Welcome to Hangman: Breaking Bad Edition!"
+			this.message = "Welcome to Hangman: Breaking Bad Edition! Press any letter to start."
 
 			this.instruct = "Press any letter to start..."
 
@@ -84,13 +81,12 @@
 			if (this.lettersGuessed.indexOf(this.userGuess) >= 0) {
 				this.message = "You tried that letter already!"
 			   	this.instruct = "Press any letter to continue..."
-			   	this.repeat = true
+
 				return false
 			}
 			else {
 				//add letter to guessed letters
 				this.lettersGuessed.push(this.userGuess)
-				this.repeat = false
 				return true	
 			}
 		},
@@ -98,12 +94,10 @@
 		letterHit: function() {
 			if (this.word.indexOf(this.userGuess) >= 0) {
 				this.message = "Hit! Keep it up!"
-				this.hit = true
 				return true
 			}
 			else {
 				this.message = "Miss! Try Again!"
-				this.hit = false
 				return false	
 			}
 
@@ -139,7 +133,7 @@
 
 		checkWin: function() {
 			if (this.hits === this.word.length) {
-				// this.winner = true
+				this.winner = true
 				this.message = "Winner!"
 				this.instruct = "Press Enter to start with a new word."
 				this.wins++
@@ -151,18 +145,19 @@
 		updateStatus: function() {
 
 			this.statusHTML = "<h3> " + this.message + "</h3><h3>Wins: " + this.wins + "</h3><h3>Losses: " + this.losses +  
-				"</h3> <h3>" + this.instruct + "</h3>"			
+				"</h3> <h3>Press any letter to start...</h3>"			
 		},
 
 		updateWords: function() {
 
-			this.wordsHTML = "<h3>Word: " + this.maskedString + "</h3> <br> <h4>Guessed letters: " + this.lettersGuessed.toString() + 
-			"</h4> <br> <h4>Guesses remaining: " + this.guesses + "</h4>"	
+			this.wordsHTML = "<h3> " + this.message + "</h3><h3>Wins: " + this.wins + "</h3><h3>Losses: " + this.losses +  
+				"</h3> <h3>Press any letter to start...</h3>"			
 		},
 
 		updateStatusImg: function() {
 
-			this.status_imgHTML = this.stsimg		
+			this.status_imgHTML = "<h3> " + this.message + "</h3><h3>Wins: " + this.wins + "</h3><h3>Losses: " + this.losses +  
+				"</h3> <h3>Press any letter to start...</h3>"			
 		},
 
 		updateHangman: function() {
@@ -180,16 +175,8 @@
 					"<img class=\"img-responsive\" id=\"hm_08\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_08.png\" alt=\"Hangman 08\">"
 			        break;
 			    case 7:
-					this.hangmanHTML = "<img class=\"img-responsive\" id=\"hm_bg\" style=\"width:100%;\" src=\"assets/images/hangman_bg.png\" alt=\"Hangman bg\"> " 
-					if ((this.hit) || (this.repeat)) {
-						this.hangmanHTML += 
-							"<img class=\"img-responsive\" id=\"hm_01\" style=\"width:100%;\" src=\"assets/images/hangman_miss_01.png\" alt=\"Hangman 01\"> " 
-					}
-					else {
-						this.hangmanHTML +=  
-							"<img class=\"img-responsive miss\" id=\"hm_01\" style=\"width:100%;\" src=\"assets/images/hangman_miss_01.png\" alt=\"Hangman 01\"> " 	
-					}
-					this.hangmanHTML +=
+					this.hangmanHTML = "<img class=\"img-responsive\" id=\"hm_bg\" style=\"width:100%;\" src=\"assets/images/hangman_bg.png\" alt=\"Hangman bg\"> " +
+					"<img class=\"img-responsive\" id=\"hm_01\" style=\"width:100%;\" src=\"assets/images/hangman_miss_01.png\" alt=\"Hangman 01\"> " +
 					"<img class=\"img-responsive\" id=\"hm_02\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_02.png\" alt=\"Hangman 02\"> " +
 					"<img class=\"img-responsive\" id=\"hm_03\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_03.png\" alt=\"Hangman 03\"> " +
 					"<img class=\"img-responsive\" id=\"hm_04\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_04.png\" alt=\"Hangman 04\"> " +
@@ -200,16 +187,8 @@
 			        break;
 			    case 6:
 					this.hangmanHTML = "<img class=\"img-responsive\" id=\"hm_bg\" style=\"width:100%;\" src=\"assets/images/hangman_bg.png\" alt=\"Hangman bg\"> " +
-					"<img class=\"img-responsive\" id=\"hm_01\" style=\"width:100%;\" src=\"assets/images/hangman_miss_01.png\" alt=\"Hangman 01\"> " 
-					if ((this.hit) || (this.repeat)) {
-						this.hangmanHTML += 
-							"<img class=\"img-responsive\" id=\"hm_02\" style=\"width:100%;\" src=\"assets/images/hangman_miss_02.png\" alt=\"Hangman 02\"> " 
-					}
-					else {
-						this.hangmanHTML +=  
-							"<img class=\"img-responsive miss\" id=\"hm_02\" style=\"width:100%;\" src=\"assets/images/hangman_miss_02.png\" alt=\"Hangman 02\"> " 	
-					}
-					this.hangmanHTML +=
+					"<img class=\"img-responsive\" id=\"hm_01\" style=\"width:100%;\" src=\"assets/images/hangman_miss_01.png\" alt=\"Hangman 01\"> " +
+					"<img class=\"img-responsive\" id=\"hm_02\" style=\"width:100%;\" src=\"assets/images/hangman_miss_02.png\" alt=\"Hangman 02\"> " +
 					"<img class=\"img-responsive\" id=\"hm_03\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_03.png\" alt=\"Hangman 03\"> " +
 					"<img class=\"img-responsive\" id=\"hm_04\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_04.png\" alt=\"Hangman 04\"> " +
 					"<img class=\"img-responsive\" id=\"hm_05\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_05.png\" alt=\"Hangman 05\"> " +
@@ -220,16 +199,8 @@
 			    case 5:
 					this.hangmanHTML = "<img class=\"img-responsive\" id=\"hm_bg\" style=\"width:100%;\" src=\"assets/images/hangman_bg.png\" alt=\"Hangman bg\"> " +
 					"<img class=\"img-responsive\" id=\"hm_01\" style=\"width:100%;\" src=\"assets/images/hangman_miss_01.png\" alt=\"Hangman 01\"> " +
-					"<img class=\"img-responsive\" id=\"hm_02\" style=\"width:100%;\" src=\"assets/images/hangman_miss_02.png\" alt=\"Hangman 02\"> " 
-					if ((this.hit) || (this.repeat)) {
-						this.hangmanHTML += 
-							"<img class=\"img-responsive\" id=\"hm_03\" style=\"width:100%;\" src=\"assets/images/hangman_miss_03.png\" alt=\"Hangman 03\"> " 
-					}
-					else {
-						this.hangmanHTML +=  
-							"<img class=\"img-responsive miss\" id=\"hm_03\" style=\"width:100%;\" src=\"assets/images/hangman_miss_03.png\" alt=\"Hangman 03\"> " 	
-					}
-					this.hangmanHTML +=
+					"<img class=\"img-responsive\" id=\"hm_02\" style=\"width:100%;\" src=\"assets/images/hangman_miss_02.png\" alt=\"Hangman 02\"> " +
+					"<img class=\"img-responsive\" id=\"hm_03\" style=\"width:100%;\" src=\"assets/images/hangman_miss_03.png\" alt=\"Hangman 03\"> " +
 					"<img class=\"img-responsive\" id=\"hm_04\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_04.png\" alt=\"Hangman 04\"> " +
 					"<img class=\"img-responsive\" id=\"hm_05\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_05.png\" alt=\"Hangman 05\"> " +
 					"<img class=\"img-responsive\" id=\"hm_06\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_06.png\" alt=\"Hangman 06\"> " +
@@ -240,16 +211,8 @@
 					this.hangmanHTML = "<img class=\"img-responsive\" id=\"hm_bg\" style=\"width:100%;\" src=\"assets/images/hangman_bg.png\" alt=\"Hangman bg\"> " +
 					"<img class=\"img-responsive\" id=\"hm_01\" style=\"width:100%;\" src=\"assets/images/hangman_miss_01.png\" alt=\"Hangman 01\"> " +
 					"<img class=\"img-responsive\" id=\"hm_02\" style=\"width:100%;\" src=\"assets/images/hangman_miss_02.png\" alt=\"Hangman 02\"> " +
-					"<img class=\"img-responsive\" id=\"hm_03\" style=\"width:100%;\" src=\"assets/images/hangman_miss_03.png\" alt=\"Hangman 03\"> " 
-					if ((this.hit) || (this.repeat)) {
-						this.hangmanHTML += 
-							"<img class=\"img-responsive\" id=\"hm_04\" style=\"width:100%;\" src=\"assets/images/hangman_miss_04.png\" alt=\"Hangman 04\"> " 
-					}
-					else {
-						this.hangmanHTML +=  
-							"<img class=\"img-responsive miss\" id=\"hm_04\" style=\"width:100%;\" src=\"assets/images/hangman_miss_04.png\" alt=\"Hangman 04\"> " 	
-					}
-					this.hangmanHTML +=
+					"<img class=\"img-responsive\" id=\"hm_03\" style=\"width:100%;\" src=\"assets/images/hangman_miss_03.png\" alt=\"Hangman 03\"> " +
+					"<img class=\"img-responsive\" id=\"hm_04\" style=\"width:100%;\" src=\"assets/images/hangman_miss_04.png\" alt=\"Hangman 04\"> " +
 					"<img class=\"img-responsive\" id=\"hm_05\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_05.png\" alt=\"Hangman 05\"> " +
 					"<img class=\"img-responsive\" id=\"hm_06\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_06.png\" alt=\"Hangman 06\"> " +
 					"<img class=\"img-responsive\" id=\"hm_07\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_07.png\" alt=\"Hangman 07\"> " +
@@ -260,16 +223,8 @@
 					"<img class=\"img-responsive\" id=\"hm_01\" style=\"width:100%;\" src=\"assets/images/hangman_miss_01.png\" alt=\"Hangman 01\"> " +
 					"<img class=\"img-responsive\" id=\"hm_02\" style=\"width:100%;\" src=\"assets/images/hangman_miss_02.png\" alt=\"Hangman 02\"> " +
 					"<img class=\"img-responsive\" id=\"hm_03\" style=\"width:100%;\" src=\"assets/images/hangman_miss_03.png\" alt=\"Hangman 03\"> " +
-					"<img class=\"img-responsive\" id=\"hm_04\" style=\"width:100%;\" src=\"assets/images/hangman_miss_04.png\" alt=\"Hangman 04\"> " 
-					if ((this.hit) || (this.repeat)) {
-						this.hangmanHTML += 
-							"<img class=\"img-responsive\" id=\"hm_05\" style=\"width:100%;\" src=\"assets/images/hangman_miss_05.png\" alt=\"Hangman 05\"> " 
-					}
-					else {
-						this.hangmanHTML +=  
-							"<img class=\"img-responsive miss\" id=\"hm_05\" style=\"width:100%;\" src=\"assets/images/hangman_miss_05.png\" alt=\"Hangman 05\"> " 	
-					}
-					this.hangmanHTML +=
+					"<img class=\"img-responsive\" id=\"hm_04\" style=\"width:100%;\" src=\"assets/images/hangman_miss_04.png\" alt=\"Hangman 04\"> " +
+					"<img class=\"img-responsive\" id=\"hm_05\" style=\"width:100%;\" src=\"assets/images/hangman_miss_05.png\" alt=\"Hangman 05\"> " +
 					"<img class=\"img-responsive\" id=\"hm_06\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_06.png\" alt=\"Hangman 06\"> " +
 					"<img class=\"img-responsive\" id=\"hm_07\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_07.png\" alt=\"Hangman 07\"> " +
 					"<img class=\"img-responsive\" id=\"hm_08\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_08.png\" alt=\"Hangman 08\">"
@@ -280,16 +235,8 @@
 					"<img class=\"img-responsive\" id=\"hm_02\" style=\"width:100%;\" src=\"assets/images/hangman_miss_02.png\" alt=\"Hangman 02\"> " +
 					"<img class=\"img-responsive\" id=\"hm_03\" style=\"width:100%;\" src=\"assets/images/hangman_miss_03.png\" alt=\"Hangman 03\"> " +
 					"<img class=\"img-responsive\" id=\"hm_04\" style=\"width:100%;\" src=\"assets/images/hangman_miss_04.png\" alt=\"Hangman 04\"> " +
-					"<img class=\"img-responsive\" id=\"hm_05\" style=\"width:100%;\" src=\"assets/images/hangman_miss_05.png\" alt=\"Hangman 05\"> " 
-					if ((this.hit) || (this.repeat)) {
-						this.hangmanHTML += 
-							"<img class=\"img-responsive\" id=\"hm_06\" style=\"width:100%;\" src=\"assets/images/hangman_miss_06.png\" alt=\"Hangman 06\"> " 
-					}
-					else {
-						this.hangmanHTML +=  
-							"<img class=\"img-responsive miss\" id=\"hm_06\" style=\"width:100%;\" src=\"assets/images/hangman_miss_06.png\" alt=\"Hangman 06\"> " 	
-					}
-					this.hangmanHTML +=
+					"<img class=\"img-responsive\" id=\"hm_05\" style=\"width:100%;\" src=\"assets/images/hangman_miss_05.png\" alt=\"Hangman 05\"> " +
+					"<img class=\"img-responsive\" id=\"hm_06\" style=\"width:100%;\" src=\"assets/images/hangman_miss_06.png\" alt=\"Hangman 06\"> " +
 					"<img class=\"img-responsive\" id=\"hm_07\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_07.png\" alt=\"Hangman 07\"> " +
 					"<img class=\"img-responsive\" id=\"hm_08\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_08.png\" alt=\"Hangman 08\">"
 			        break;
@@ -300,16 +247,8 @@
 					"<img class=\"img-responsive\" id=\"hm_03\" style=\"width:100%;\" src=\"assets/images/hangman_miss_03.png\" alt=\"Hangman 03\"> " +
 					"<img class=\"img-responsive\" id=\"hm_04\" style=\"width:100%;\" src=\"assets/images/hangman_miss_04.png\" alt=\"Hangman 04\"> " +
 					"<img class=\"img-responsive\" id=\"hm_05\" style=\"width:100%;\" src=\"assets/images/hangman_miss_05.png\" alt=\"Hangman 05\"> " +
-					"<img class=\"img-responsive\" id=\"hm_06\" style=\"width:100%;\" src=\"assets/images/hangman_miss_06.png\" alt=\"Hangman 06\"> " 
-					if ((this.hit) || (this.repeat)) {
-						this.hangmanHTML += 
-							"<img class=\"img-responsive\" id=\"hm_07\" style=\"width:100%;\" src=\"assets/images/hangman_miss_07.png\" alt=\"Hangman 07\"> " 
-					}
-					else {
-						this.hangmanHTML +=  
-							"<img class=\"img-responsive miss\" id=\"hm_07\" style=\"width:100%;\" src=\"assets/images/hangman_miss_07.png\" alt=\"Hangman 07\"> " 	
-					}
-					this.hangmanHTML +=
+					"<img class=\"img-responsive\" id=\"hm_06\" style=\"width:100%;\" src=\"assets/images/hangman_miss_06.png\" alt=\"Hangman 06\"> " +
+					"<img class=\"img-responsive\" id=\"hm_07\" style=\"width:100%;\" src=\"assets/images/hangman_miss_07.png\" alt=\"Hangman 07\"> " +
 					"<img class=\"img-responsive\" id=\"hm_08\" style=\"width:100%; display:none;\" src=\"assets/images/hangman_miss_08.png\" alt=\"Hangman 08\">"
 			        break;
 			    case 0:
@@ -320,17 +259,9 @@
 					"<img class=\"img-responsive\" id=\"hm_04\" style=\"width:100%;\" src=\"assets/images/hangman_miss_04.png\" alt=\"Hangman 04\"> " +
 					"<img class=\"img-responsive\" id=\"hm_05\" style=\"width:100%;\" src=\"assets/images/hangman_miss_05.png\" alt=\"Hangman 05\"> " +
 					"<img class=\"img-responsive\" id=\"hm_06\" style=\"width:100%;\" src=\"assets/images/hangman_miss_06.png\" alt=\"Hangman 06\"> " +
-					"<img class=\"img-responsive\" id=\"hm_07\" style=\"width:100%;\" src=\"assets/images/hangman_miss_07.png\" alt=\"Hangman 07\"> " 
-					if ((this.hit) || (this.repeat)) {
-						this.hangmanHTML += 
-							"<img class=\"img-responsive\" id=\"hm_08\" style=\"width:100%;\" src=\"assets/images/hangman_miss_08.png\" alt=\"Hangman 08\"> " 
-					}
-					else {
-						this.hangmanHTML +=  
-							"<img class=\"img-responsive miss\" id=\"hm_08\" style=\"width:100%;\" src=\"assets/images/hangman_miss_08.png\" alt=\"Hangman 08\"> " 	
-					}
-					
-					break;
+					"<img class=\"img-responsive\" id=\"hm_07\" style=\"width:100%;\" src=\"assets/images/hangman_miss_07.png\" alt=\"Hangman 07\"> " +
+					"<img class=\"img-responsive\" id=\"hm_08\" style=\"width:100%;\" src=\"assets/images/hangman_miss_08.png\" alt=\"Hangman 08\">"
+			        break;
 			    default:
 			        this.hangmanHTML = "<h2>ERROR!!</h2>";
 			}			
@@ -342,48 +273,43 @@
 			this.guesses = 8
 			this.hits = 0
 			this.winner = false
-			this.gameover = false
 			this.lettersGuessed = []
 			this.word = " "
 			this.formattedWord = []
 			this.maskedString = " "
 			this.chooseRandomWord()
 			this.formatWord()
-			this.message = "Hangman: Breaking Bad Edition!"
-			this.instruct = "Press any letter to start."
-		    this.stsimg = " "
+			this.message = "Hangman: Breaking Bad Edition! Press any letter to start."
+
+	       	this.statusHTML = "<h3> " + this.message + "</h3><h3>Wins: " + this.wins + "</h3><h3>Losses: " + this.losses +  
+			"</h3><h3>Guessed letters: " + this.lettersGuessed.toString() + "</h3><h3>Guesses remaining: " + this.guesses + 
+			"</h3> <h3>Press any letter to continue...</h3>"
+
+			this.status_imgHTML = " "
+
+			this.wordsHTML = "<h3>Word: " + this.maskedString + "</h3>" + "<h4>Guessed letters: " + this.lettersGuessed.toString() + 
+			"</h4><h4>Guesses remaining: " + this.guesses + "</h4>"
+
 
 		},
 
 		html: function() {
-			
-			if (!(this.gameover) && !(this.winner)) {
+			// Update Instructions and Status
+			this.updateStatus()
+			document.getElementById("status").innerHTML = (this.statusHTML)
 
-				// Update Instructions and Status
-				this.updateStatus()
-				document.getElementById("status").innerHTML = (this.statusHTML)
+			// Update Word and Guesses
+			this.updateWords()
+			document.getElementById("words").innerHTML = (this.wordsHTML)
 
-				// Update Word and Guesses
-				this.updateWords()
-				document.getElementById("words").innerHTML = (this.wordsHTML)
+			// Update Status Image
+			this.updateStatusImg()
+			document.getElementById("status_img").innerHTML = (this.status_imgHTML)
 
-				// Update Status Image
-				this.updateStatusImg()
-				document.getElementById("status_img").innerHTML = (this.status_imgHTML)
+			// Update Hangman Images
+			this.updateHangman()
+			document.getElementById("hangman").innerHTML = (this.hangmanHTML)
 
-				// Update Hangman Images
-				this.updateHangman()
-				document.getElementById("hangman").innerHTML = (this.hangmanHTML)
-
-				if (this.guesses === 0) {
-					this.gameover = true
-				}
-
-				if (this.hits === this.word.length) {
-				this.winner = true
-				}
-
-			}
 		}
 
 

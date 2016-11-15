@@ -1,0 +1,292 @@
+#logo {
+	margin: -64px 0 0px -160px; /* play with these to position the image */
+	/*position:absolute;*/
+	z-index:100;
+	width:156px;
+	/*background-color: #fff;*/
+	padding: 5px;
+}
+
+video#smoke {width:100%; height:100%; position:fixed; top:0px; left:0px; z-index:-1000;}
+
+
+.carousel-inner > .item > img {
+	margin: 0 auto;
+}
+
+.carousel-caption {
+    right: 19%;
+    left: 19%;
+
+}
+
+.navbar {
+	border: none;
+	border-top: 23px solid transparent;
+}
+
+.navbar-inverse .navbar-brand {
+	color: white;
+	font-family: 'Russo One', sans-serif;
+	font-size: 15px;
+	
+}
+
+.navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {
+	margin-left: 150px;
+}
+
+.navbar-inverse {
+	background-image: none;
+	/*background-color: black;*/
+	border-color: #1d5510;
+
+}
+
+.dropdown-menu>li>a {
+	color: #1d5510;
+}
+
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:focus, .navbar-inverse .navbar-nav > .open > a:hover {
+	background-image: none;
+    background-color: black;
+}
+
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
+    color: #1d5510;
+    background-image: linear-gradient(to bottom,#FFF 0,#f3f3f3 100%);
+
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    text-shadow: none;
+}
+
+.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
+    background-color: #1d5510;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+	color: black;
+	font-family: 'Share Tech', sans-serif;
+
+}
+
+.h2, h2 {
+	font-size: 40px;
+	text-shadow: 0 2px 0 #1d5510;
+	color: white;
+}
+
+.h3, h3 {
+	color: white;
+	font-size: 20px;
+}
+
+.h4, h4 {
+	color: white;
+	font-size: 16px;
+}
+
+#hm_bg {
+	border: 5px groove;
+	position: absolute;
+	z-index: 1;
+}
+
+
+#hm_01 {
+	position: absolute;
+	z-index: 2;
+/*	display: inline-block;
+*/}
+
+#hm_02 {
+	position: absolute;
+	z-index: 3;
+/*	display: none;
+*/}
+
+#hm_03 {
+	position: absolute;
+	z-index: 4;
+/*	display: none;
+*/}
+
+#hm_04 {
+	position: absolute;
+	z-index: 5;
+/*	display: none;
+*/}
+
+#hm_05 {
+	position: absolute;
+	z-index: 6;
+/*	display: none;
+*/}
+
+#hm_06 {
+	position: absolute;
+	z-index: 7;
+/*	display: none;
+*/}
+
+#hm_07 {
+	position: absolute;
+	z-index: 8;
+/*	display: none;
+*/}
+
+#hm_08 {
+	position: absolute;
+	z-index: 9;
+/*	display: none;
+*/}
+
+
+.panel-default > .panel-heading {
+	font-family: 'Share Tech', sans-serif;
+	font-size: 22px;
+	background-image: none;
+	text-shadow: 0 1px 0 #fff;
+	background-color: #1d5510;
+	font-weight: bold;
+	color: black;
+}
+
+.btn-default {
+	background-image: none;
+	background-color: #1d5510;
+	font-weight: bold;
+	color: black;
+}
+
+.carouselcaption {
+	font-family: 'Georgia', Times, "Times New Roman", serif;
+	/*width: 100%;
+	padding-left: 0px;
+	padding-right: 0px;*/
+	color: white;
+	font-size: 24px;
+	text-align: center;
+	background-color: #1d5510;
+	padding-top: 15px;
+	padding-bottom: 3px;
+	position: relative;
+	top: 50px;
+}	
+
+.caption {
+	font-family: 'Georgia', Times, "Times New Roman", serif;
+	/*width: 100%;
+	padding-left: 0px;
+	padding-right: 0px;*/
+	color: white;
+	font-size: 24px;
+	text-align: center;
+	background-color: #1d5510;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	position: relative;
+	top: -62px;
+	overflow: auto;
+}	
+
+.carousel-control.right {
+	background-image: none;
+	background-color: black;
+}
+
+.carousel-control.left {
+	background-image: none;
+	background-color: black;
+}
+
+.margin-bottom-xs {margin-bottom: 5px;}  
+.margin-bottom-sm {margin-bottom: 10px;} 
+.margin-bottom-md {margin-bottom: 15px;}
+.margin-bottom-lg {margin-bottom: 30px;}  
+
+a>img {
+	margin-bottom: 8px;
+}
+
+@keyframes imghover {
+    from {opacity: .5;}
+    to {opacity: 1;}
+ }
+
+a>img:hover {
+	/*outline: 3px solid black;
+    outline-offset: -2px;*/
+    animation-name: imghover;
+    animation-duration: .5s;
+    animation-iteration-count: 1;
+}
+
+@keyframes miss {
+    from {opacity: 0;}
+    to {opacity: 1;}
+ }
+
+.miss {
+	/*outline: 3px solid black;
+    outline-offset: -2px;*/
+    animation-name: miss;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+  /*background-color: black;*/
+  /*background-image: url("../images/BB_bkgd.jpg"); */
+  /*background-image: linear-gradient(to bottom,#FFF 0,#f3f3f3 100%);*/
+  background: black; /* For browsers that do not support gradients */
+  background: -webkit-radial-gradient(ellipse at top, #083300, black); /* Safari 5.1 to 6.0 */
+  background: -o-radial-gradient(ellipse at top, #083300, black); /* For Opera 11.6 to 12.0 */
+  background: -moz-radial-gradient(ellipse at top, #083300, black); /* For Firefox 3.6 to 15 */
+  background: radial-gradient(ellipse at top, #083300, black); /* Standard syntax */
+
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #1d5510;
+  border-bottom  : 20px solid black;
+}
+
+.container .text-muted {
+  margin: 10px 0;
+  color: white;
+}
+
+@media screen and (min-width: 768px) {
+.carousel-caption {
+    right: 19%;
+    left: 19%;
+
+ }
+}
+
+@media screen and (max-width: 768px) {
+	#logo {
+		margin: -44px 0 0px -161px; 
+	}
+
+	.byname{
+		display: none;
+	}
+
+ }

@@ -1,0 +1,5 @@
+<video id="smoke" autoplay="" loop="">
+  <source src="http://www.elementfinder.info/vid/smoke.mp4" type="video/mp4">
+  <source src="http://www.elementfinder.info/vid/smoke.webm" type="video/webm">
+  <source src="http://www.elementfinder.info/vid/smoke.ogv" type="video/ogg">
+</video>
