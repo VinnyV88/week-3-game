@@ -1,17 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Hangman</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hangman: Breaking Bad Edition</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Share+Tech" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">  
 </head>
+
 <body>
-    
-    <div id="game">
-      
-    </div>
+	<video id="video" autoplay>
+	  <source src="assets/video/smoke.mp4" type="video/mp4">
+	  <source src="assets/video/smoke.webm" type="video/webm">
+	  <source src="assets/video/smoke.ogv" type="video/ogg">
+	</video>
+	<audio autoplay>
+		<source src="assets/audio/breaking_bad_theme.mp3" type="audio/mp3">
+	</audio>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html"><span class="byname"> by Vincent Visconti</span><img id="logo" src="assets/images/ViVi_Web_logo_bb.svg" alt="Logo"></a>
+            </div>
+        </div>
+    </nav>
 
-<script src="assets/javascript/game.js" ></script>
+	<div class="container">
+		
+		<div class="row">	
+			<div class="col-md-10 margin-bottom-lg col-md-offset-1">
+				<div class="row margin-bottom-lg">
+					<div class="col-md-6 col-md-offset-2">
+						<img class="img-responsive" style="width:100%" src="assets/images/hangman_logo_bb_wide.png" alt="Hangman hdr">
+						
+		            </div>
+		        </div>
 
+		        <div class="row margin-bottom-lg">
+					<div class="col-md-5">
+						<h2>Instructions and Status</h2>
+						<div id="status"> 
 
-</body>
+						</div>
+					</div>
+					<div class="col-md-7 img-responsive">
+						<img class="img-responsive" id="hm_bg_holder" style="width:85%;" src="assets/images/hangman_bg.png" alt="Hangman bg">
+						<div id="hangman">
+
+						</div>
+		            </div>
+
+				</div>
+
+		        <div class="row">
+					<div class="col-md-5">
+						<div id="status_img"> 
+
+						</div>
+		            </div>
+
+					<div class="col-md-7">
+						<h2>Word and Guesses</h2>
+						<div id="words"> 
+
+						</div>
+					</div>
+
+		        </div>
+
+		    </div>
+
+		</div>
+		
+	</div>
+
+		<footer class="footer">
+      		<div class="container">
+        		<p class="text-muted text-center">&copy; Copyright 2016 Vincent Visconti</p>
+      		</div>
+    	</footer>
+		<script src="assets/javascript/game.js" ></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	</body>
+
 </html>

@@ -102,19 +102,19 @@
 
 		chooseRandomHit: function() {
 			return this.hitSounds[Math.floor(Math.random() * this.hitSounds.length)]
-		}
+		},
 
 		chooseRandomMiss: function() {
 			return this.missSounds[Math.floor(Math.random() * this.missSounds.length)]
-		}
+		},
 
 		chooseRandomLossPic: function() {
 			return this.losePic[Math.floor(Math.random() * this.losePic.length)]
-		}
+		},
 
 		chooseRandomLossSound: function() {
 			return this.loseSound[Math.floor(Math.random() * this.loseSound.length)]
-		}
+		},
 
 		validKey: function() {
 			if ((this.userGuess >= "a") && (this.userGuess <= "z")) {
@@ -150,13 +150,13 @@
 			if (this.word.indexOf(this.userGuess) >= 0) {
 				this.message = "Hit! Keep it up!"
 				this.hit = true
-				this.playSound = chooseRandomHit()
+				this.playSound = this.chooseRandomHit()
 				return true
 			}
 			else {
 				this.message = "Miss! Try Again!"
 				this.hit = false
-				this.playSound = chooseRandomMiss()
+				this.playSound = this.chooseRandomMiss()
 				return false	
 			}
 
@@ -191,8 +191,8 @@
 			if (this.guesses === 0) {
     			this.message = "Game Over!"
     			this.instruct = "Press Enter to start with a new word."
-				this.playSound = chooseRandomLossSound()
-				this.stsimg = chooseRandomLossPic()
+				this.playSound = this.chooseRandomLossSound()
+				this.stsimg = this.chooseRandomLossPic()
     			this.losses++
 			   	
     		} 
@@ -215,7 +215,11 @@
 		updateStatus: function() {
 
 			this.statusHTML = "<h3> " + this.message + "</h3><h3>Wins: " + this.wins + "</h3><h3>Losses: " + this.losses +  
-				"</h3> <h3>" + this.instruct + "</h3>"			
+				"</h3> <h3>" + this.instruct + "</h3>"	
+
+			if (!(this.playSound === " ")) {
+				this.statusHTML += "<audio autoplay> <source src=\"assets/audio/" + this.playSound + "\" type=\"audio/mp3\"> </audio>"
+			}
 		},
 
 		updateWords: function() {
@@ -228,6 +232,7 @@
 
 			if (!(this.stsimg === " ")) {
 				this.status_imgHTML = "<img class=\"img-responsive\" id=\"sts\" style=\"width:100%;\" src=\"assets/images/" + this.stsimg + "\" alt=\"status image\">"
+
 			}
 			else {
 				this.status_imgHTML = " "
@@ -238,7 +243,7 @@
 
 			switch(this.guesses) {
 			    case 8:
-					this.hangmanHTML = "<img class=\"img-responsive\" id=\"hm_bg\" style=\"width:85%;\" src=\"assets/images/hangman_bg.png\" alt=\"Hangman bg\"> " +
+					this.hangmanHTML = "<img class=\"img-responsive\" id=\"hm_bg\" style=\"width:85%;\" src=\"assets/images/hangman_bg_gn.png\" alt=\"Hangman bg\"> " +
 					"<img class=\"img-responsive\" id=\"hm_01\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_01.png\" alt=\"Hangman 01\"> " +
 					"<img class=\"img-responsive\" id=\"hm_02\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_02.png\" alt=\"Hangman 02\"> " +
 					"<img class=\"img-responsive\" id=\"hm_03\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_03.png\" alt=\"Hangman 03\"> " +
@@ -249,7 +254,7 @@
 					"<img class=\"img-responsive\" id=\"hm_08\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_08.png\" alt=\"Hangman 08\">"
 			        break;
 			    case 7:
-					this.hangmanHTML = "<img class=\"img-responsive\" id=\"hm_bg\" style=\"width:85%;\" src=\"assets/images/hangman_bg.png\" alt=\"Hangman bg\"> " 
+					this.hangmanHTML = "<img class=\"img-responsive\" id=\"hm_bg\" style=\"width:85%;\" src=\"assets/images/hangman_bg_gn.png\" alt=\"Hangman bg\"> " 
 					if ((this.hit) || (this.repeat) || (this.invKey)) {
 						this.hangmanHTML += 
 							"<img class=\"img-responsive\" id=\"hm_01\" style=\"width:85%;\" src=\"assets/images/hangman_miss_01.png\" alt=\"Hangman 01\"> " 
@@ -268,7 +273,7 @@
 					"<img class=\"img-responsive\" id=\"hm_08\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_08.png\" alt=\"Hangman 08\">"
 			        break;
 			    case 6:
-					this.hangmanHTML = "<img class=\"img-responsive\" id=\"hm_bg\" style=\"width:85%;\" src=\"assets/images/hangman_bg.png\" alt=\"Hangman bg\"> " +
+					this.hangmanHTML = "<img class=\"img-responsive\" id=\"hm_bg\" style=\"width:85%;\" src=\"assets/images/hangman_bg_gn.png\" alt=\"Hangman bg\"> " +
 					"<img class=\"img-responsive\" id=\"hm_01\" style=\"width:85%;\" src=\"assets/images/hangman_miss_01.png\" alt=\"Hangman 01\"> " 
 					if ((this.hit) || (this.repeat) || (this.invKey)) {
 						this.hangmanHTML += 
@@ -287,7 +292,7 @@
 					"<img class=\"img-responsive\" id=\"hm_08\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_08.png\" alt=\"Hangman 08\">"
 			        break;
 			    case 5:
-					this.hangmanHTML = "<img class=\"img-responsive\" id=\"hm_bg\" style=\"width:85%;\" src=\"assets/images/hangman_bg.png\" alt=\"Hangman bg\"> " +
+					this.hangmanHTML = "<img class=\"img-responsive\" id=\"hm_bg\" style=\"width:85%;\" src=\"assets/images/hangman_bg_gn.png\" alt=\"Hangman bg\"> " +
 					"<img class=\"img-responsive\" id=\"hm_01\" style=\"width:85%;\" src=\"assets/images/hangman_miss_01.png\" alt=\"Hangman 01\"> " +
 					"<img class=\"img-responsive\" id=\"hm_02\" style=\"width:85%;\" src=\"assets/images/hangman_miss_02.png\" alt=\"Hangman 02\"> " 
 					if ((this.hit) || (this.repeat) || (this.invKey)) {
@@ -306,7 +311,7 @@
 					"<img class=\"img-responsive\" id=\"hm_08\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_08.png\" alt=\"Hangman 08\">"
 			        break;
 			    case 4:
-					this.hangmanHTML = "<img class=\"img-responsive\" id=\"hm_bg\" style=\"width:85%;\" src=\"assets/images/hangman_bg.png\" alt=\"Hangman bg\"> " +
+					this.hangmanHTML = "<img class=\"img-responsive\" id=\"hm_bg\" style=\"width:85%;\" src=\"assets/images/hangman_bg_gn.png\" alt=\"Hangman bg\"> " +
 					"<img class=\"img-responsive\" id=\"hm_01\" style=\"width:85%;\" src=\"assets/images/hangman_miss_01.png\" alt=\"Hangman 01\"> " +
 					"<img class=\"img-responsive\" id=\"hm_02\" style=\"width:85%;\" src=\"assets/images/hangman_miss_02.png\" alt=\"Hangman 02\"> " +
 					"<img class=\"img-responsive\" id=\"hm_03\" style=\"width:85%;\" src=\"assets/images/hangman_miss_03.png\" alt=\"Hangman 03\"> " 
@@ -325,7 +330,7 @@
 					"<img class=\"img-responsive\" id=\"hm_08\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_08.png\" alt=\"Hangman 08\">"
 			        break;
 			    case 3:
-					this.hangmanHTML = "<img class=\"img-responsive\" id=\"hm_bg\" style=\"width:85%;\" src=\"assets/images/hangman_bg.png\" alt=\"Hangman bg\"> " +
+					this.hangmanHTML = "<img class=\"img-responsive\" id=\"hm_bg\" style=\"width:85%;\" src=\"assets/images/hangman_bg_gn.png\" alt=\"Hangman bg\"> " +
 					"<img class=\"img-responsive\" id=\"hm_01\" style=\"width:85%;\" src=\"assets/images/hangman_miss_01.png\" alt=\"Hangman 01\"> " +
 					"<img class=\"img-responsive\" id=\"hm_02\" style=\"width:85%;\" src=\"assets/images/hangman_miss_02.png\" alt=\"Hangman 02\"> " +
 					"<img class=\"img-responsive\" id=\"hm_03\" style=\"width:85%;\" src=\"assets/images/hangman_miss_03.png\" alt=\"Hangman 03\"> " +
@@ -344,7 +349,7 @@
 					"<img class=\"img-responsive\" id=\"hm_08\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_08.png\" alt=\"Hangman 08\">"
 			        break;
 			    case 2:
-					this.hangmanHTML = "<img class=\"img-responsive\" id=\"hm_bg\" style=\"width:85%;\" src=\"assets/images/hangman_bg.png\" alt=\"Hangman bg\"> " +
+					this.hangmanHTML = "<img class=\"img-responsive\" id=\"hm_bg\" style=\"width:85%;\" src=\"assets/images/hangman_bg_gn.png\" alt=\"Hangman bg\"> " +
 					"<img class=\"img-responsive\" id=\"hm_01\" style=\"width:85%;\" src=\"assets/images/hangman_miss_01.png\" alt=\"Hangman 01\"> " +
 					"<img class=\"img-responsive\" id=\"hm_02\" style=\"width:85%;\" src=\"assets/images/hangman_miss_02.png\" alt=\"Hangman 02\"> " +
 					"<img class=\"img-responsive\" id=\"hm_03\" style=\"width:85%;\" src=\"assets/images/hangman_miss_03.png\" alt=\"Hangman 03\"> " +
@@ -363,7 +368,7 @@
 					"<img class=\"img-responsive\" id=\"hm_08\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_08.png\" alt=\"Hangman 08\">"
 			        break;
 			    case 1:
-					this.hangmanHTML = "<img class=\"img-responsive\" id=\"hm_bg\" style=\"width:85%;\" src=\"assets/images/hangman_bg.png\" alt=\"Hangman bg\"> " +
+					this.hangmanHTML = "<img class=\"img-responsive\" id=\"hm_bg\" style=\"width:85%;\" src=\"assets/images/hangman_bg_gn.png\" alt=\"Hangman bg\"> " +
 					"<img class=\"img-responsive\" id=\"hm_01\" style=\"width:85%;\" src=\"assets/images/hangman_miss_01.png\" alt=\"Hangman 01\"> " +
 					"<img class=\"img-responsive\" id=\"hm_02\" style=\"width:85%;\" src=\"assets/images/hangman_miss_02.png\" alt=\"Hangman 02\"> " +
 					"<img class=\"img-responsive\" id=\"hm_03\" style=\"width:85%;\" src=\"assets/images/hangman_miss_03.png\" alt=\"Hangman 03\"> " +
@@ -382,7 +387,7 @@
 					"<img class=\"img-responsive\" id=\"hm_08\" style=\"width:85%; display:none;\" src=\"assets/images/hangman_miss_08.png\" alt=\"Hangman 08\">"
 			        break;
 			    case 0:
-					this.hangmanHTML = "<img class=\"img-responsive\" id=\"hm_bg\" style=\"width:85%;\" src=\"assets/images/hangman_bg.png\" alt=\"Hangman bg\"> " +
+					this.hangmanHTML = "<img class=\"img-responsive\" id=\"hm_bg\" style=\"width:85%;\" src=\"assets/images/hangman_bg_gn.png\" alt=\"Hangman bg\"> " +
 					"<img class=\"img-responsive\" id=\"hm_01\" style=\"width:85%;\" src=\"assets/images/hangman_miss_01.png\" alt=\"Hangman 01\"> " +
 					"<img class=\"img-responsive\" id=\"hm_02\" style=\"width:85%;\" src=\"assets/images/hangman_miss_02.png\" alt=\"Hangman 02\"> " +
 					"<img class=\"img-responsive\" id=\"hm_03\" style=\"width:85%;\" src=\"assets/images/hangman_miss_03.png\" alt=\"Hangman 03\"> " +
@@ -421,6 +426,8 @@
 			this.message = "Hangman: Breaking Bad Edition!"
 			this.instruct = "Press any letter to start."
 		    this.stsimg = " "
+			this.playSound = " "
+
 
 		},
 
@@ -470,8 +477,8 @@
 
 	document.onkeyup = function(event) {
 
-	this.stsimg = " "
-   	this.playSound = " "
+	hangman.stsimg = " "
+   	hangman.playSound = " "
 
  
     if (((event.keyCode == 13) && hangman.winner) || ((event.keyCode == 13) && (hangman.guesses === 0))) {
