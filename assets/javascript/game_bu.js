@@ -17,7 +17,6 @@
 		video.style.display = 'none';
 	});
 
-	var wordObj = {};
 
 	var hangman = {
 		wins: 0,
@@ -25,11 +24,6 @@
 		guesses: 8,
 		userGuess: " ",
 		hits: 0,
-		hitSounds: ["hit_goddamnright.mp3", "hit_teartomyeye.mp3", "hit_tioding.mp3"],
-		missSounds: ["miss_bupkiss.mp3", "miss_getyourshittogether.mp3", "miss_gooseegg.mp3", "miss_jesuschrist.mp3", "miss_nodice.mp3", "miss_tiodingding.mp3"],
-		losePic: ["gus_dead.gif", "dead01.jpg", "end.jpg", "felina.png", "breakingbad_dead.jpg", "knocks.jpg", "tio_ding.jpg"],
-		loseSound: ["better_call_saul.mp3", "fringlittlerata.mp3", "gus_is_dead.mp3", "iamthedanger.mp3", "knocks.mp3"],
-		playSound: " ",
 		hit: false,
 		repeat: false,
 		invKey: false,
@@ -44,77 +38,47 @@
 		status_imgHTML: " ",
 		wordsHTML: " ",
 		hangmanHTML: " ",
+		formattedWord: [],
 		maskedString: " ",
-		owords:[gustavo = {oword: "gustavo fring", wpic: "gus_kingpin.png", wsound: "fringkillfamily.mp3"},
-			    meth = {oword: "crystal meth", wpic: "yeah_bitch.gif", wsound: "yeahscience.mp3"},
-			    cranston = {oword: "bryan cranston", wpic: "Bryan_Cranston", wsound: "empirebiz.mp3"},
-			    teacher = {oword: "chemistry teacher", wpic: "yeah_bitch.gif", wsound: "yeahscience.mp3"},
-			    walter = {oword: "walter white", wpic: "walter_white.jpg", wsound: "iamthedanger.mp3"},
-			    lydia = {oword: "lydia", wpic: "iwin.jpg", wsound: "iwon.mp3"},
-			    albuquereque = {oword: "albuquereque", wpic: "yeah_bitch.gif", wsound: "yeahbitch.mp3"},
-			    flynn = {oword: "flynn", wpic: "yeah_bitch.gif", wsound: "yeahbitch.mp3"},
-			    cancer = {oword: "cancer", wpic: "cancer.jpg", wsound: "notindanger.mp3"},
-			    lawyer = {oword: "lawyer", wpic: "lawyer.jpg", wsound: "bettercallsaullaugh.mp3"},
-			    hank = {oword: "hank", wpic: "hank.jpg", wsound: "treadlightly.mp3"},
-			    heisenberg = {oword: "heisenberg", wpic: "heisenberg.jpg", wsound: "heisenberg.mp3"},
-			    pinkman = {oword: "jesse pinkman", wpic: "yeah_bitch.gif", wsound: "yeahmagents.mp3"},
-			    saul = {oword: "saul goodman", wpic: "saul.jpg", wsound: "noedealnodice.mp3"},
-			    skyler = {oword: "skyler", wpic: "skyler_cash.jpg", wsound: "dirtysaul.mp3"},
-			    ricin = {oword: "ricin", wpic: "ricin.png", wsound: "noIknock.mp3"},
-			    tio = {oword: "tio salamanca", wpic: "tio.jpg", wsound: "ding.mp3"},
-			    tuco = {oword: "tuco salamanca", wpic: "tuco_tight.gif", wsound: "tucotight.mp3"},
-			    pollos = {oword: "los pollos hermanos", wpic: "lospollos.gif", wsound: "gus_is_dead.mp3"},
-			    mike = {oword: "mike ehrmantraut", wpic: "mike.jpg", wsound: "mike.mp3"}
-				],
+		owords:[gustavo = {oword: "gustavo", lpic: " ", wpic: " ", lsound: " ", wsound: " "},
+			    fring = {oword: "fring", lpic: " ", wpic: " ", lsound: " ", wsound: " "},
+			    lydia = {oword: "lydia", lpic: " ", wpic: " ", lsound: " ", wsound: " "},
+			    albuquereque = {oword: "albuquereque", lpic: " ", wpic: " ", lsound: " ", wsound: " "},
+			    tuco = {oword: "tuco", lpic: " ", wpic: " ", lsound: " ", wsound: " "},
+			    fring = {oword: "fring", lpic: " ", wpic: " ", lsound: " ", wsound: " "}
+				]
 		//look into using an array of word objects instead of just words. a word object can have it's own personalized win/loss images and sounds
-		// words: ["gustavo", "fring", "lydia", "albuquereque", "tuco", "flynn", "chemistry", "teacher", 
-		// 		"cancer", "crystal", "lawyer", "hank", "heisenberg", "walter", "white", "meth",
-		// 		"cranston", "pinkman", "saul", "goodman", "skyler", "ehrmantraut", "ricin", "salamanca"],
+		words: ["gustavo", "fring", "lydia", "albuquereque", "tuco", "flynn", "chemistry", "teacher", 
+				"cancer", "crystal", "lawyer", "hank", "heisenberg", "walter", "white", "meth",
+				"cranston", "pinkman", "saul", "goodman", "skyler", "ehrmantraut", "ricin", "salamanca"],
 
 		initial: function() {
 			this.chooseRandomWord()
 			this.formatWord()
+
+
 			this.message = "Welcome to Hangman: Breaking Bad Edition!"
+
 			this.instruct = "Press any letter to start..."
+
+		   	this.stsimg = " "
+
 		},
 
 		chooseRandomWord: function() {
 			 
-			// this.word = this.words[Math.floor(Math.random() * this.words.length)]
+			this.word = this.words[Math.floor(Math.random() * this.words.length)]
 			
-			// for(var i=0; i < this.word.length; i++) {
+			for(var i=0; i < this.word.length; i++) {
 
-// debugger;
-			wordObj = this.owords[Math.floor(Math.random() * this.owords.length)]
+				this.formattedWord[i] = this.word.substr(i, 1)
 
-			this.word = wordObj.oword
-			
-			// for(var i=0; i < this.word.length; i++) {
-
-			// 	this.formattedWord[i] = this.word.substr(i, 1)
-
-			// }
+			}
 
 			// this.maskedString = this.formattedWord.toString().replace(/,/g, " ")
 
 			
 		},//close function chooseRandomWord
-
-		chooseRandomHit: function() {
-			return this.hitSounds[Math.floor(Math.random() * this.hitSounds.length)]
-		}
-
-		chooseRandomMiss: function() {
-			return this.missSounds[Math.floor(Math.random() * this.missSounds.length)]
-		}
-
-		chooseRandomLossPic: function() {
-			return this.losePic[Math.floor(Math.random() * this.losePic.length)]
-		}
-
-		chooseRandomLossSound: function() {
-			return this.loseSound[Math.floor(Math.random() * this.loseSound.length)]
-		}
 
 		validKey: function() {
 			if ((this.userGuess >= "a") && (this.userGuess <= "z")) {
@@ -150,13 +114,11 @@
 			if (this.word.indexOf(this.userGuess) >= 0) {
 				this.message = "Hit! Keep it up!"
 				this.hit = true
-				this.playSound = chooseRandomHit()
 				return true
 			}
 			else {
 				this.message = "Miss! Try Again!"
 				this.hit = false
-				this.playSound = chooseRandomMiss()
 				return false	
 			}
 
@@ -168,20 +130,13 @@
 				 
 			for(var i=0; i < this.word.length; i++) {
 				if (this.lettersGuessed.indexOf(this.word.substr(i, 1)) >= 0) {
-					// this.formattedWord[i] = this.word.substr(i, 1)
-					this.maskedString += (this.word.substr(i, 1) + " ")	
+					this.formattedWord[i] = this.word.substr(i, 1)
+					this.maskedString += (this.word.substr(i, 1)	+ " ")	
 					this.hits++
 				}
 				else {
-					// if space in word, then don't underline
-					if (this.word.substr(i, 1) === " ") {
-						this.maskedString += "&nbsp;&nbsp;"
-						//spaces are free hits
-						this.hits++
-					}
-					else {	
+					this.formattedWord[i] = "_"	
 					this.maskedString += "_ "
-					}
 				}
 			}
 		},
@@ -191,8 +146,7 @@
 			if (this.guesses === 0) {
     			this.message = "Game Over!"
     			this.instruct = "Press Enter to start with a new word."
-				this.playSound = chooseRandomLossSound()
-				this.stsimg = chooseRandomLossPic()
+    			this.stsimg = "breakingbad_dead.jpg"
     			this.losses++
 			   	
     		} 
@@ -204,8 +158,7 @@
 				// this.winner = true
 				this.message = "Winner!"
 				this.instruct = "Press Enter to start with a new word."
-				this.stsimg = wordObj.wpic
-				this.playSound = wordObj.wsound
+				this.stsimg = "yeah_bitch.gif"
 				this.wins++
 			   	
 			}
@@ -414,7 +367,7 @@
 			this.gameover = false
 			this.lettersGuessed = []
 			this.word = " "
-			// this.formattedWord = []
+			this.formattedWord = []
 			this.maskedString = " "
 			this.chooseRandomWord()
 			this.formatWord()
@@ -469,10 +422,6 @@
 	hangman.html()
 
 	document.onkeyup = function(event) {
-
-	this.stsimg = " "
-   	this.playSound = " "
-
  
     if (((event.keyCode == 13) && hangman.winner) || ((event.keyCode == 13) && (hangman.guesses === 0))) {
     	 
