@@ -12,16 +12,6 @@ video {width:100%; height:100%; position:fixed; top:0px; left:0px; z-index:-1000
 }
 
 
-.carousel-inner > .item > img {
-	margin: 0 auto;
-}
-
-.carousel-caption {
-    right: 19%;
-    left: 19%;
-
-}
-
 .navbar {
 	border: none;
 	border-top: 23px solid transparent;
@@ -43,29 +33,6 @@ video {width:100%; height:100%; position:fixed; top:0px; left:0px; z-index:-1000
 	/*background-color: black;*/
 	border-color: #1d5510;
 
-}
-
-.dropdown-menu>li>a {
-	color: #1d5510;
-}
-
-.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:focus, .navbar-inverse .navbar-nav > .open > a:hover {
-	background-image: none;
-    background-color: black;
-}
-
-.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
-    color: #1d5510;
-    background-image: linear-gradient(to bottom,#FFF 0,#f3f3f3 100%);
-
-}
-
-.navbar-inverse .navbar-nav > li > a {
-    text-shadow: none;
-}
-
-.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
-    background-color: #1d5510;
 }
 
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
@@ -177,99 +144,40 @@ was to put this dummy image without absolute positioning to push the row down*/
 /*	display: none;
 */}
 
-
-.panel-default > .panel-heading {
-	font-family: 'Share Tech', sans-serif;
-	font-size: 22px;
-	background-image: none;
-	text-shadow: 0 1px 0 #fff;
-	background-color: #1d5510;
-	font-weight: bold;
-	color: black;
-}
-
-.btn-default {
-	background-image: none;
-	background-color: #1d5510;
-	font-weight: bold;
-	color: black;
-}
-
-.carouselcaption {
-	font-family: 'Georgia', Times, "Times New Roman", serif;
-	/*width: 100%;
-	padding-left: 0px;
-	padding-right: 0px;*/
-	color: white;
-	font-size: 24px;
-	text-align: center;
-	background-color: #1d5510;
-	padding-top: 15px;
-	padding-bottom: 3px;
-	position: relative;
-	top: 50px;
-}	
-
-.caption {
-	font-family: 'Georgia', Times, "Times New Roman", serif;
-	/*width: 100%;
-	padding-left: 0px;
-	padding-right: 0px;*/
-	color: white;
-	font-size: 24px;
-	text-align: center;
-	background-color: #1d5510;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	position: relative;
-	top: -62px;
-	overflow: auto;
-}	
-
-.carousel-control.right {
-	background-image: none;
-	background-color: black;
-}
-
-.carousel-control.left {
-	background-image: none;
-	background-color: black;
-}
-
 .margin-bottom-xs {margin-bottom: 5px;}  
 .margin-bottom-sm {margin-bottom: 10px;} 
 .margin-bottom-md {margin-bottom: 15px;}
 .margin-bottom-lg {margin-bottom: 30px;}  
-
-a>img {
-	margin-bottom: 8px;
-}
 
 @keyframes imghover {
     from {opacity: .5;}
     to {opacity: 1;}
  }
 
-a>img:hover {
-	/*outline: 3px solid black;
-    outline-offset: -2px;*/
-    animation-name: imghover;
-    animation-duration: .5s;
-    animation-iteration-count: 1;
-}
-
-@keyframes miss {
-    from {opacity: 0;}
-    to {opacity: 1;}
+@keyframes flash {
+    from {opacity: 1;}
+    to {opacity: 0;}
  }
 
 .miss {
-	/*outline: 3px solid black;
-    outline-offset: -2px;*/
     animation-name: miss;
-    animation-duration: 1s;
+    animation-duration: 3s;
     animation-iteration-count: 1;
 }
+
+
+.area{
+  animation-name: flash;
+  animation-iteration-count: 5;
+  animation-duration: .5s;
+  line-height: 1;
+  font-size:100px;
+  color:#fff;
+  font-weight:700;
+  /*text-shadow:0px 0px 5px #fff,
+      0px 0px 7px #fff;*/
+}
+
 
 /* Sticky footer styles
 -------------------------------------------------- */

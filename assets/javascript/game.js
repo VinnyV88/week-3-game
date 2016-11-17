@@ -31,6 +31,7 @@
 		loseSound: ["better_call_saul.mp3", "fringlittlerata.mp3", "gus_is_dead.mp3", "iamthedanger.mp3", "knocks.mp3"],
 		playSound: " ",
 		hit: false,
+		miss: false,
 		repeat: false,
 		invKey: false,
 		winner: false,
@@ -76,6 +77,8 @@
 			this.formatWord()
 			this.message = "Welcome to Hangman: Breaking Bad Edition!"
 			this.instruct = "Press any letter to start..."
+			this.hit = false
+			this.miss = false
 		},
 
 		chooseRandomWord: function() {
@@ -162,12 +165,14 @@
 			if (this.word.indexOf(this.userGuess) >= 0) {
 				this.message = "Hit! Keep it up!"
 				this.hit = true
+				this.miss = false
 				this.playSound = this.chooseRandomHit()
 				return true
 			}
 			else {
 				this.message = "Miss! Try Again!"
 				this.hit = false
+				this.miss = true
 				this.playSound = this.chooseRandomMiss()
 				return false	
 			}
@@ -206,7 +211,6 @@
 				this.playSound = this.chooseRandomLossSound()
 				this.stsimg = this.chooseRandomLossPic()
     			this.losses++
-			   	
     		} 
 
 		},
@@ -242,13 +246,33 @@
 
 		updateStatusImg: function() {
 
-			if (!(this.stsimg === " ")) {
+			if ((this.gameover) || (this.winner)) {
 				this.status_imgHTML = "<img class=\"img-responsive\" id=\"sts\" style=\"width:100%;\" src=\"assets/images/" + this.stsimg + "\" alt=\"status image\">"
+				} else if (this.invKey) {
+					this.status_imgHTML = "<div class=\"area\">Invalid Key!</div>"
+					} else if (this.repeat) {
+						this.status_imgHTML = "<div class=\"area\">Letter Repeat!</div>"
+						} else if (this.hit) {
+							this.status_imgHTML = "<div class=\"area\">Hit!</div>"
+							} else if (this.miss) {
+								this.status_imgHTML = "<div class=\"area\">Miss!</div>"
+							} else {
+								this.status_imgHTML = " "
+								}
 
-			}
-			else {
-				this.status_imgHTML = " "
-			}	
+
+			// if (!(this.stsimg === " ")) {
+			// 	this.status_imgHTML = "<img class=\"img-responsive\" id=\"sts\" style=\"width:100%;\" src=\"assets/images/" + this.stsimg + "\" alt=\"status image\">"
+
+			// }
+			// else if (this.hit) {
+			// 	this.status_imgHTML = "<div class=\"area\">Hit!</div>"
+			// } else if (this.miss) {
+			// 	this.status_imgHTML = "<div class=\"area\">Miss!</div>"
+			// } else {
+			// 	this.status_imgHTML = " "
+			// }	
+
 		},
 
 		updateHangman: function() {
@@ -427,6 +451,8 @@
 		reset: function() {
 			this.guesses = 8
 			this.hits = 0
+			this.hit = false
+			this.miss = false
 			this.winner = false
 			this.gameover = false
 			this.lettersGuessed = []
@@ -447,6 +473,14 @@
 			
 			if (!(this.gameover) && !(this.winner)) {
 
+				if (this.guesses === 0) {
+					this.gameover = true
+				}
+
+				if (this.hits === this.word.length) {
+				this.winner = true
+				}
+
 				// Update Instructions and Status
 				this.updateStatus()
 				document.getElementById("status").innerHTML = (this.statusHTML)
@@ -463,20 +497,9 @@
 				// Update Hangman Images
 				this.updateHangman()
 				document.getElementById("hangman").innerHTML = (this.hangmanHTML)
-
-				if (this.guesses === 0) {
-					this.gameover = true
-				}
-
-				if (this.hits === this.word.length) {
-				this.winner = true
-				}
-
+				
 			}
 		}
-
-
-
 
 	} // close object Hangman
 
