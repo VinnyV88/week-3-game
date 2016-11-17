@@ -50,7 +50,7 @@
 			    cranston = {oword: "bryan cranston", wpic: "Bryan_Cranston", wsound: "empirebiz.mp3"},
 			    teacher = {oword: "chemistry teacher", wpic: "yeah_bitch.gif", wsound: "yeahscience.mp3"},
 			    walter = {oword: "walter white", wpic: "walter_white.jpg", wsound: "iamthedanger.mp3"},
-			    lydia = {oword: "lydia", wpic: "iwin.jpg", wsound: "iwon.mp3"},
+			    lydia = {oword: "lydia", wpic: "Iwin.jpg", wsound: "Iwon.mp3"},
 			    albuquereque = {oword: "albuquereque", wpic: "yeah_bitch.gif", wsound: "yeahbitch.mp3"},
 			    flynn = {oword: "flynn", wpic: "yeah_bitch.gif", wsound: "yeahbitch.mp3"},
 			    cancer = {oword: "cancer", wpic: "cancer.jpg", wsound: "notindanger.mp3"},
@@ -101,11 +101,23 @@
 		},//close function chooseRandomWord
 
 		chooseRandomHit: function() {
-			return this.hitSounds[Math.floor(Math.random() * this.hitSounds.length)]
+			//coin flip to dtermine to play sound effect or not
+			if (Math.floor(Math.random() * 2) == 0) {
+				return this.hitSounds[Math.floor(Math.random() * this.hitSounds.length)]
+			}
+			else {
+				return " "
+			}
 		},
 
 		chooseRandomMiss: function() {
-			return this.missSounds[Math.floor(Math.random() * this.missSounds.length)]
+			//coin flip to dtermine to play sound effect or not
+			if (Math.floor(Math.random() * 2) == 0) {
+				return this.missSounds[Math.floor(Math.random() * this.missSounds.length)]
+			}
+			else {
+				return " "
+			}
 		},
 
 		chooseRandomLossPic: function() {
