@@ -104,7 +104,7 @@
 		maskedString: " ",
 		owords:[gustavo = {oword: "gustavo fring", wpic: "gus_kingpin.png", wsound: "fringkillfamily.mp3"},
 			    meth = {oword: "crystal meth", wpic: "yeah_bitch.gif", wsound: "yeahscience.mp3"},
-			    cranston = {oword: "bryan cranston", wpic: "Bryan_Cranston", wsound: "empirebiz.mp3"},
+			    cranston = {oword: "bryan cranston", wpic: "Bryan_Cranston.jpg", wsound: "empirebiz.mp3"},
 			    teacher = {oword: "chemistry teacher", wpic: "yeah_bitch.gif", wsound: "yeahscience.mp3"},
 			    walter = {oword: "walter white", wpic: "walter_white.jpg", wsound: "iamthedanger.mp3"},
 			    lydia = {oword: "lydia", wpic: "Iwin.jpg", wsound: "Iwon.mp3"},
