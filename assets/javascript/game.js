@@ -59,7 +59,7 @@
 			    hank = {oword: "hank", wpic: "hank.jpg", wsound: "treadlightly.mp3"},
 			    heisenberg = {oword: "heisenberg", wpic: "heisenberg.jpg", wsound: "heisenberg.mp3"},
 			    pinkman = {oword: "jesse pinkman", wpic: "yeah_bitch.gif", wsound: "yeahmagents.mp3"},
-			    saul = {oword: "saul goodman", wpic: "saul.jpg", wsound: "noedealnodice.mp3"},
+			    saul = {oword: "saul goodman", wpic: "saul.jpg", wsound: "nodealnodice.mp3"},
 			    skyler = {oword: "skyler", wpic: "skyler_cash.jpg", wsound: "dirtysaul.mp3"},
 			    ricin = {oword: "ricin", wpic: "ricin.png", wsound: "noIknock.mp3"},
 			    tio = {oword: "tio salamanca", wpic: "tio.jpg", wsound: "ding.mp3"},
@@ -256,24 +256,11 @@
 							this.status_imgHTML = "<div class=\"area\">Hit!</div>"
 							} else if (this.miss) {
 								this.status_imgHTML = "<div class=\"area\">Miss!</div>"
-							} else {
-								this.status_imgHTML = " "
-								}
+								} else {
+									this.status_imgHTML = " "
+									}
 
-
-			// if (!(this.stsimg === " ")) {
-			// 	this.status_imgHTML = "<img class=\"img-responsive\" id=\"sts\" style=\"width:100%;\" src=\"assets/images/" + this.stsimg + "\" alt=\"status image\">"
-
-			// }
-			// else if (this.hit) {
-			// 	this.status_imgHTML = "<div class=\"area\">Hit!</div>"
-			// } else if (this.miss) {
-			// 	this.status_imgHTML = "<div class=\"area\">Miss!</div>"
-			// } else {
-			// 	this.status_imgHTML = " "
-			// }	
-
-		},
+	},
 
 		updateHangman: function() {
 
@@ -444,8 +431,6 @@
 			    default:
 			        this.hangmanHTML = "<h2>ERROR!!</h2>";
 			}			
-
-
 		},
 
 		reset: function() {
