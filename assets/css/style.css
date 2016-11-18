@@ -173,9 +173,14 @@ was to put this dummy image without absolute positioning to push the row down*/
     to {opacity: 0;}
  }
 
+@keyframes miss {
+    from {opacity: 0;}
+    to {opacity: 1;}
+ }
+
 .miss {
     animation-name: miss;
-    animation-duration: 3s;
+    animation-duration: 4s;
     animation-iteration-count: 1;
 }
 
