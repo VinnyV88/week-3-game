@@ -25,18 +25,31 @@
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
-                <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                </button> -->
+                </button>
                 <a class="navbar-brand" href="index.html"><span class="byname"> by Vincent Visconti</span><img id="logo" src="assets/images/ViVi_Web_logo_bb.svg" alt="Logo"></a>
             </div>
-        </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                	<h4 id="navh4">Sound Control</h4>
+                	<ul class="list-inline">
+                        <li>
+                            <div class="btn-group btn-toggle">
+                                <button class="btn btn-md btn-success active" id="playall"><span class="glyphicon glyphicon-music"></span> Play All</button>
+                                <button class="btn btn-md btn-default" id="muteeffects"><span class="glyphicon glyphicon-volume-down"></span> Mute Effects</button>
+                                <button class="btn btn-md btn-default" id="muteall"><span class="glyphicon glyphicon-volume-off"></span> Mute All</button>
+                            </div>
+                        </li>
+                    </ul>
+                </ul>
+            </div>
     </nav>
     <div class="container">
         <div class="row">
-            <div class="col-md-10 margin-bottom-lg col-md-offset-1">
+            <div class="col-md-11 margin-bottom-lg col-md-offset-1">
                 <div class="row margin-bottom-lg">
                     <div class="col-md-6 col-md-offset-2">
                         <img class="img-responsive" style="width:100%" src="assets/images/hangman_logo_bb_wide.png" alt="Hangman hdr">
@@ -44,7 +57,7 @@
                 </div>
                 <div class="row margin-bottom-lg">
                     <div class="col-md-5">
-                        <h2>Instructions and Status</h2>
+                        <h1>Instructions and Status</h1>
                         <div id="status">
                         </div>
                     </div>
@@ -57,12 +70,12 @@
                 <div class="row">
                     <div class="col-md-5">
                         <!-- <div class="fade"> -->
-                            <div id="status_img">
-                            </div>
+                        <div id="status_img">
+                        </div>
                         <!-- </div> -->
                     </div>
                     <div class="col-md-7">
-                        <h2>Word and Guesses</h2>
+                        <h1>Words and Guesses</h1>
                         <div id="words">
                         </div>
                     </div>
@@ -75,9 +88,9 @@
             <p class="text-muted text-center">&copy; Copyright 2016 Vincent Visconti</p>
         </div>
     </footer>
-    <script src="assets/javascript/game.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+     <script src="https://code.jquery.com/jquery.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+     <script src="assets/javascript/game.js"></script>
 </body>
 
 </html>

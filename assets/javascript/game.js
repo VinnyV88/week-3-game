@@ -13,8 +13,60 @@
 // 9. If user runs out of guesses, display losing sequence (sound-bite/song, graphic animation)  
 // 10. Start game over with new random word
 
-	video.addEventListener('ended',function() {
-		video.style.display = 'none';
+	video.addEventListener("ended",function() {
+		video.style.display = "none";
+	});
+
+	$("#playall").click(function() {
+
+		hangman.playAll = true
+		hangman.muteEffects = false
+		hangman.muteAll = false
+
+		$("audio").prop("muted", false);
+
+		$(this).addClass("active");
+		$(this).addClass("btn-success");
+		$(this).removeClass("btn-default");
+
+		$(this).siblings().removeClass("active");
+		$(this).siblings().removeClass("btn-success");
+		$(this).siblings().addClass("btn-default");
+
+	});
+
+	$("#muteeffects").click(function() {
+
+		hangman.playAll = false
+		hangman.muteEffects = true
+		hangman.muteAll = false
+		
+		$(this).addClass("active");
+		$(this).addClass("btn-success");
+		$(this).removeClass("btn-default");
+
+		$(this).siblings().removeClass("active");
+		$(this).siblings().removeClass("btn-success");
+		$(this).siblings().addClass("btn-default");
+
+	});
+
+	$("#muteall").click(function() {
+
+		hangman.playAll = false
+		hangman.muteEffects = false
+		hangman.muteAll = true
+
+		$("audio").prop("muted", true);
+		
+		$(this).addClass("active");
+		$(this).addClass("btn-success");
+		$(this).removeClass("btn-default");
+
+		$(this).siblings().removeClass("active");
+		$(this).siblings().removeClass("btn-success");
+		$(this).siblings().addClass("btn-default");
+
 	});
 
 	var wordObj = {};
@@ -30,6 +82,10 @@
 		losePic: ["gus_dead.gif", "dead01.jpg", "end.jpg", "felina.png", "breakingbad_dead.jpg", "knocks.jpg", "tio_ding.jpg"],
 		loseSound: ["better_call_saul.mp3", "fringlittlerata.mp3", "gus_is_dead.mp3", "iamthedanger.mp3", "knocks.mp3"],
 		playSound: " ",
+		playAll: true,
+		muteEffects: false,
+		muteAll: false,
+		mute: "",
 		hit: false,
 		miss: false,
 		repeat: false,
@@ -162,6 +218,12 @@
 		},
 		
 		letterHit: function() {
+			if (this.playAll) {
+				this.mute = ""
+			} else {
+				this.mute = " muted"
+			}
+
 			if (this.word.indexOf(this.userGuess) >= 0) {
 				this.message = "Hit! Keep it up!"
 				this.hit = true
@@ -210,7 +272,13 @@
     			this.instruct = "Press Enter to start with a new word."
 				this.playSound = this.chooseRandomLossSound()
 				this.stsimg = this.chooseRandomLossPic()
-    			this.losses++
+ 				this.losses++
+				if (!(this.muteAll)) {
+					this.mute = ""
+				} else {
+					this.mute = " muted"
+				}
+
     		} 
 
 		},
@@ -223,25 +291,30 @@
 				this.stsimg = wordObj.wpic
 				this.playSound = wordObj.wsound
 				this.wins++
-			   	
+
+				if (!(this.muteAll)) {
+					this.mute = ""
+				} else {
+					this.mute = " muted"
+				}
 			}
 
 		},
 
 		updateStatus: function() {
 
-			this.statusHTML = "<h3> " + this.message + "</h3><h3>Wins: " + this.wins + "</h3><h3>Losses: " + this.losses +  
-				"</h3> <h3>" + this.instruct + "</h3>"	
+			this.statusHTML = "<h3> " + this.message + "</h3><h2>Wins: " + this.wins + "</h2><h2>Losses: " + this.losses +  
+				"</h2> <h3>" + this.instruct + "</h3>"	
 
 			if (!(this.playSound === " ")) {
-				this.statusHTML += "<audio autoplay> <source src=\"assets/audio/" + this.playSound + "\" type=\"audio/mp3\"> </audio>"
+				this.statusHTML += "<audio autoplay" + this.mute + "> <source src=\"assets/audio/" + this.playSound + "\" type=\"audio/mp3\"> </audio>"
 			}
 		},
 
 		updateWords: function() {
 
-			this.wordsHTML = "<h3>Word: " + this.maskedString + "</h3> <br> <h4>Guessed letters: " + this.lettersGuessed.toString() + 
-			"</h4> <br> <h4>Guesses remaining: " + this.guesses + "</h4>"	
+			this.wordsHTML = "<h2>" + this.maskedString + "</h2> <br> <h3>Guessed letters: " + this.lettersGuessed.toString() + 
+			"</h3> <br> <h3>Guesses remaining: " + this.guesses + "</h3>"	
 		},
 
 		updateStatusImg: function() {
