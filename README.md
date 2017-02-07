@@ -1,7 +1,7 @@
 # Hangman: Breaking Bad Edition
 
 ## Synopsis:
-A hangman game that randomly chooses a word or phrase related to AMC's TV series Breaking Bad. You play by guessing letters by pressing letter keys on the keyboard.  Letter hits and misses are accompanied by CSS generated animations and sound effects from the show.  A GIF and a sound byte related to the word/phrase are played when a word is solved.  If you are unable to solve the word/phrase within the alloted guesses, the animated "hangman" (Heisenberg) gets hung out to dry.  
+A hangman game that randomly chooses a word or phrase related to AMC's TV series Breaking Bad. You play by guessing letters by pressing letter keys on the keyboard.  Letter hits and misses are accompanied by CSS generated animations and sound effects from the show.  A GIF and a sound byte related to the word/phrase are played when a word is solved.  If you are unable to solve the word/phrase within the alloted guesses, the animated "hangman" (Heisenberg) gets hung out to dry.  <a href="https://hangman-breaking-bad.herokuapp.com/" target="_blank">https://hangman-breaking-bad.herokuapp.com/</a> 
 
 <a href="https://media.giphy.com/media/26xBuGskWWuwfyJos/source.gif" target="_blank"><img src="http://i.giphy.com/26xBuGskWWuwfyJos.gif" ></a>
 <a href="https://media.giphy.com/media/26xBJd3Gow1Fdikq4/source.gif" target="_blank"><img src="http://i.giphy.com/26xBJd3Gow1Fdikq4.gif" ></a>
